@@ -189,7 +189,7 @@
 			menu.classList.toggle("burger")
 			menu.classList.toggle("close")
 		}
-	
+				
 		$(document).on('click', 'input[type="button"]', function(event) {
 			let id = this.id;
 			const rutaDoc = document.getElementById('nameFile'+id).value;
@@ -231,8 +231,17 @@
 									var rescatarDocs = $('#guardarDoc').val();
 									rescatarDocs = rescatarDocs + '_' + response;
 									document.getElementById("guardarDoc").value = rescatarDocs;
-									var image_x = document.getElementById('image_'+response);
+			// *****************Borramos la imagen X
+									var image_x = document.getElementById('image_'+id);
+									console.log('image_'+id);
 									image_x.parentNode.removeChild(image_x);
+			// *****************hacemos que aparesca el check
+									var img = document.createElement("img");
+									img.src = "img/paloma.png";
+									var src = document.getElementById("checkImg_"+id);
+									img.height = 20;
+									img.width = 17;
+									src.appendChild(img);
 									// window.location.href = window.location.href + "?listaDocsChek=" + response;
 							} else {
 								alert('ERROR AL CARGAR DOCUMENTO');
@@ -352,6 +361,7 @@
 		</div>
 				<!-- <form id="regiration_form" novalidate action="action.php"  method="post"> -->
 				<form  enctype="multipart/form-data" id="regiration_form"  name="captura1" action="" method="POST"> 
+				
 				<fieldset>
 
 				 		<div class="form-row">
@@ -602,7 +612,10 @@
 											<div class="col">
 													<input type="text" class="form-control border border-dark" style = "display:none" id="validarDoc" name="validarDoc" value="<?php if(isset($_POST["validarDoc"])){ echo $_POST["validarDoc"];}else{ echo "HOLA"; } ?>" >
 													<p>
-														<img src="./img/qr.png" id='<?php echo "image_".$documentoN; ?>'>
+														<img src="./img/tache.png" height="17" width="20" id='<?php echo "image_".$documentoN; ?>'>
+														<div id="<?php echo "checkImg_".$documentoN; ?>" height="17" width="20">
+															
+														</div>
 													</p>
 												<?php	
 												$contadorD = 0;
