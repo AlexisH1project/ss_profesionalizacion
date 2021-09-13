@@ -113,9 +113,6 @@
 			}
 			});
 
-			function enviarDatos2(){
-				alert("NOOOOO");
-			}
 			function enviarDatos(){
 				// var formulario = document.captura1;
 				// formulario.action= './Controller/agregarNewRegistro.php';
@@ -183,12 +180,6 @@
 				    //   } else 
 				    //   	formulario.submit();
 		 }
-
-		 function cambiar() {
-			menu = document.getElementById("menu")
-			menu.classList.toggle("burger")
-			menu.classList.toggle("close")
-		}
 				
 		$(document).on('click', 'input[type="button"]', function(event) {
 			let id = this.id;
@@ -208,13 +199,16 @@
 			var elCorreo_j = $("#correo_j").val();
 			var elnum_j= $("#num_j").val();
 			var laExt_j = $("#ext_j").val();
+			var formData = new FormData();
+			var files = $('#nameFile'+id)[0].files[0];
 
 			if(eldom_j == "" || elAp1_j == "" || elAp2_j == "" || elNom_j== "" || elP_j == "" || elCorreo_j == "" || elnum_j== "" || laExt_j == ""){
 				alert ("Falta completar algun campo");
 				return false;
-			}else{
-				var formData = new FormData();
-				var files = $('#nameFile'+id)[0].files[0];
+			}else if(files){
+				
+				// const input = document.getElementById('nameFile');
+				console.log("File Seleccionado : ", files);
 					formData.append('file',files);
 					formData.append('correoJ',correoJ);
 					formData.append('id',id);
@@ -248,6 +242,8 @@
 							}
 						}
 					});
+			}else{
+				alert('Archivo no seleccionado');
 			}
 			// return false;
 
@@ -286,23 +282,6 @@
     	
 		<?php 
 			include "Controller/configuracion.php";
-			$banderaid = "x"; //bandera que si cambia de x es porque existe un id_movimiento y el registro ya esta en la BD
-
-					if(isset($_POST["listaDoc"])){ 
-						$listaMostrar = $_POST["listaDoc"];
-					}else{
-						$listaMostrar = "";
-					}
-//------ este codigo comentado lo identifique y no tiene que ir , no encontre su funcionalidad
-
-		/*	$sql = "SELECT * FROM fomope WHERE id_movimiento = '$idMovSeg'";
-			if($result = mysqli_query($conexion,$sql)){
-				$ver = mysqli_fetch_row($result);
-			}else{
-					echo '<script type="text/javascript">alert("Error en la conexion");</script>';
-					echo '<script type="text/javascript">alert("error '. mysqli_error($conexion).'");</script>';
-								
-			}*/
 
 			$valor = "";
 			$hoy = "select CURDATE()";
@@ -317,22 +296,6 @@
 					$diaActual=date("w", strtotime($fechaSistema));
 					
 			 }
-
-			/* $sqlQna = "SELECT * FROM m1ct_fechasnomina WHERE estadoActual = 'abierta'";
-
-			 if($resQna = mysqli_query($conexion,$sqlQna)){
-			 	$rowQna = mysqli_fetch_row($resQna);
-			 	//echo "OOOOOLLAA";
-			 	$fehaI = date("d-m-Y", strtotime($rowQna[2])); 
-			 	$fehaF = date("d-m-Y", strtotime($rowQna[5])); 
-			 	$newQna = $rowQna[0];
-
-
-			 }else{
-			 
-			 	echo "error sql";
-			 }
-		*/
 ?>
 		
 
@@ -360,14 +323,12 @@
 			<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
 		</div>
 				<!-- <form id="regiration_form" novalidate action="action.php"  method="post"> -->
-				<form  enctype="multipart/form-data" id="regiration_form"  name="captura1" action="" method="POST"> 
+				<form  enctype="multipart/form-data" id="regiration_form"  name="captura1" action="./Controller/guardarF.php" method="POST"> 
 				
 				<fieldset>
 
 				 		<div class="form-row">
-							<input type="text" class="form-control" id="userName" name="userName" value="<?php echo $usuarioSeguir ?>" style="display:none">
 							<input type="text" class="form-control" id="botonAccion" name="botonAccion" value="<?php if(isset($_POST["botonAccion"])){ echo $_POST["botonAccion"];} ?>" style="display:none">
-							<input type="text" class="form-control" id="qnaActual" name="qnaActual" value="<?php  echo  $newQna?>" style="display:none">
 						</div> 
 					<table  class="table table-striped table-bordered">
 					<thead>
@@ -617,29 +578,12 @@
 															
 														</div>
 													</p>
-												<?php	
-												$contadorD = 0;
-													if (isset($_GET["listaDocsChek"])) {
-															if($contadorD == 0){
-																$nombreCompletoArch = $_GET["listaDeDoc"] ;
-																$contadorD++;
-															}else{
-																$nombreCompletoArch = $nombreCompletoArch . $_GET["listaDeDoc"];
-															}
-														  	echo "
-															        <script>
-															                listaDeDoc( '$nombreCompletoArch');
-															        </script >";
-															// $arrayNumDoc = explode("_", $enviarDoc);		
-															// $numeroDeDocs = count($arrayNumDoc);
-													}
-												?>
 											</div>	
 										</td>
 										<td WIDTH="20%" HEIGHT="20%">
 											<div class="col-3">
 												<div class="md-form md-0">
-													<input type="file" id="<?php echo "nameFile".$documentoN; ?>" name="nameArchivo">
+													<input type="file" id="<?php echo "nameFile".$documentoN; ?>" name="nameArchivo" required>
 												<!--  <p class="help-block">Ejemplo de texto de ayuda.</p> -->
 												</div>
 											</div>
@@ -661,7 +605,7 @@
 					</tbody>
 
 					</table>
-					Resultado: <span id="resultado">0</span>
+					<!-- Resultado: <span id="resultado">0</span> -->
 						<input type="button" name="previous" class="previous btn btn-default" value="Previo" />
 						<input type="button" name="next" class="next btn btn-info" value="Siguiente" />
 		</fieldset>
@@ -736,178 +680,16 @@
 		</fieldset>
 					
 				<div class="col-md-8 col-md-offset-8">
-					<?php 
-						$banderaBoton=0; //admin2
-							if(isset($_POST['guardarAdj'])){
-									
-									$nombreArch = $_POST['documentoSelct'];
-									$concatenarNombDoc = $_POST['guardarDoc'];
-									$leerMov = $_POST['id_env'];
-
-
-								    $unidad = $_POST['unidadSelct'];
-									$domUr = $_POST['domUR'];
-									$listaCompleta = $_POST['listaDoc'];
-									$elApellido1 = strtoupper($_POST['apellido1']);
-									$elApellido2 = strtoupper($_POST['apellido2']);
-									$elNombre = strtoupper($_POST['nombre']);
-									$elPuesto = $_POST['puesto'];
-									$elDom_t = $_POST['dom_titular'];
-									$elCorreo_t = strtoupper($_POST['correo']);
-									$elNum_t = $_POST['num_t'];
-									$laExt_t = $_POST['ext'];
-									
-									$elDom_j = $_POST['dom_titular_j'];
-									$elApellido1_j = strtoupper($_POST['apellido1_j']);
-									$elApellido2_j = strtoupper($_POST['apellido2_j']);
-									$elNombre_j = strtoupper($_POST['nombre_j']);
-									$elPuesto_j = $_POST['puesto_j'];
-									$elCorreo_j = strtoupper($_POST['correo_j']);
-									$elNum_j = $_POST['num_j'];
-									$laExt_j = $_POST['ext_j'];
-									
-									$elApellido1_ep = strtoupper($_POST['apellido1_ep']);
-									$elApellido2_ep= strtoupper($_POST['apellido2_ep']);
-									$elNombre_ep= strtoupper($_POST['nombre_ep']);
-									$elCorreo_ep = strtoupper($_POST['correo_ep']);
-									$elNum_ep= $_POST['num_ep'];
-									$laExt_ep= $_POST['ext_ep'];
-
-									$bandera = 0;
-
-// ***********************************buscamos todos los datos por si existe un mov similar 
-				$datosDobles = "SELECT id_estructura, color_estado FROM registro WHERE ur = '$unidad' AND correo_t = '$elCorreo_t' AND apellido1_t = '$elApellido1' AND apellido2_t = '$elApellido2_j' AND nombre_t = '$elNombre_j' AND tel_t = '$elNum_t' AND ext_t = '$laExt_t'  ORDER BY id_encuesta DESC";
-				if($resRechazo = mysqli_query($conexion, $datosDobles)){
-					$rechazoActual = mysqli_fetch_row($resRechazo);
-					if($rechazoActual[1] == "negro"){
-						$bandera = 1;
-					}
-				}	
-				// if($bandera == 1){
-				// 	echo '<script type="text/javascript"> alert("No puede ser registrado este movimiento, ya que existe un último movimiento de esta persona en bandeja de rechazo, Se sugiere editar el rechazo."); </script>';
-				// }else{
-									// if($datasub2 = mysqli_query($conexion,$datosDobles)){
-                                   	// 	$extid =mysqli_fetch_row($datasub2);
-								    // 	$res1Check = mysqli_num_rows($datasub2);
-								    // 	if ($res1Check == NULL){
-								    // 		$res1Check = 0;
-								    // 	}else{
-								    // 		$res1Check = 1;
-								    // 		$banderaid = $extid[0];
-								    // 	}                                 		
-                                   	// }
-				//----------------Sacamos la Hora 
-				$hoy = "select CURDATE()";
-				$tiempo ="select curTime()";
-
-				 if ($resultHoy = mysqli_query($conexion,$hoy) AND $resultTime = mysqli_query($conexion,$tiempo)) {
-						 $fechaArray = mysqli_fetch_row($resultHoy);
-						 $horaArray = mysqli_fetch_row($resultTime);
-				 }
-				$h_id = str_replace ( ":", '',$horaArray[0] ); 
-				$f_id = str_replace ( "-", '',$fechaArray[0] ); 
-									
-                                   	if ($leerMov == "x") { //$res1Check<1
-                                   		$newsql = "INSERT INTO registro(
-											   					ur,
-																domicilio_ur,
-																nombre_t,
-																apellido1_t,
-																apellido2_t,
-																puesto_t,
-																domicilio_t,
-																correo_t,
-																tel_t,
-																ext_t,
-																nombre_j,
-																apellido1_j,
-																apellido2_j,
-																puesto_j,
-																domicilio_j,
-																correo_j,
-																tel_j,
-																ext_j,
-																nombre_e,
-																apellido1_e,
-																apellido2_e,
-																correo_e,
-																tel_e,
-																ext_e,
-																ine,
-																fmp,
-																aur,
-																fechaCaptura,
-																id_doc,
-																color_estado				
-																) VALUES (
-																	'$unidad',			
-																	'$domUr',
-																	'$elNombre',
-																	'$elApellido1',
-																	'$elApellido2',
-																	'$elPuesto',
-																	'$elDom_t',
-																	'$elCorreo_t',
-																	'$elNum_t',
-																	'$laExt_t',
-																	'$elNombre_j',
-																	'$elApellido1_j',
-																	'$elApellido2_j',
-																	'$elPuesto_j',
-																	'$elDom_j',
-																	'$elCorreo_j',
-																	'$elNum_j',
-																	'$laExt_j',
-																	'$elNombre_ep',
-																	'$elApellido1_ep',
-																	'$elApellido2_ep',
-																	'$elCorreo_ep',
-																	'$elNum_ep',
-																	'$laExt_ep',
-																	'',
-																	'',
-																	'',
-																	'$fechaArray[0]',
-																	'$f_id$h_id',
-																	'verde'
-																)";
-
-                                   		if($datasub = mysqli_query($conexion,$newsql)){
-                                   		// 	if($datasub2 = mysqli_query($conexion,$datosDobles)){
-		                                //    		$extid =mysqli_fetch_row($datasub2);
-										//     	$res1Check = mysqli_num_rows($datasub2);
-		                                //    		$banderaid = $extid[0];
-		                                //    	}	
-                                   		}		
-                                   	}
-										
-								
-							// }
-							if(strpos($enviarDoc, "INE") !== false){
-								if(strpos($enviarDoc, "FMP") !== false){
-									if(strpos($enviarDoc, "AUR") !== false){
-										echo "<script>
-											enviarDatos();
-										</script >";			
-									}
-								}
-							}
-						}
-						?>	
 					<input type="text" style="display: none;" name="id_env" id="id_enviar" value="<?php echo $banderaid?>">
  				</div>	
 				<br>
 
 <br> <br> 
 <br>
-						<div class="form-row">
-							<input type="text" class="form-control" id="userName" name="userName" value="<?php echo $usuarioSeguir ?>" style="display:none">
-						</div>
 					<!-- <input type="button" onclick="enviarDatos()" class="btn btn-primary" value="Enviar Información" name="botonAccion"> -->
 					<!-- <input type="submit" name="infoEnv" class="btn btn-primary" value="Enviar Información"><br> -->
 		
 			</form>
-
 		</center>
 		<!-- <form  enctype="multipart/form-data" id="formBoton" name="boton2" action="" method="POST">  -->
 		<!-- </form> -->
