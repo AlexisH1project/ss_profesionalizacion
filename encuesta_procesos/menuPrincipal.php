@@ -265,37 +265,12 @@
 	          <li class=" estilo-color">
 	            <a href=  <?php echo ("'./Controller/consultaRoles.php?usuarioSeguir=$usuarioSeguir''"); ?> ><img src="./img/2_ic.png" alt="x" height="17" width="20"/>      Bandeja</a>
 	          </li>
-	           <li class=" estilo-color">
-	            <a href=  <?php echo ("'./FiltroDescargar.php?usuario_rol=$usuarioSeguir'"); ?> ><img src="./img/icreport2.png" alt="x" height="17" width="20"/>      Descarga de Documentos</a>
-	          </li>
-	          <li class=" estilo-color">
-	            <a href=  <?php echo ("'./generarReporte.php?usuario_rol=$usuarioSeguir'"); ?> ><img src="./img/icreport.png" alt="x" height="17" width="20"/>Generar Reporte</a>
-	          </li>
 	          <li class=" estilo-color">
 	              <a href= <?php echo ("'./consultaEstado.php?usuario_rol=$usuarioSeguir'");?>><img src="./img/ic-consulta.png" alt="x" height="17" width="17"/> Consulta</a>
 	          </li>
-	          <li class=" estilo-color">
-	              <a href= <?php echo ("'./guardarVista.php?usuario_rol=$usuarioSeguir'");?>><img  src="./img/upload1.png" alt="x" height="17" width="20"/> Guardar Documentos</a>
-	          </li>
-	           <li class=" estilo-color">
-	              <a href= <?php echo ("'./qrtxt.php?usuario_rol=$usuarioSeguir'");?>><img  src="./img/qr.png" alt="x" height="17" width="20"/> Guardar txt QR</a>
-	          </li>
-	          <li class=" estilo-color">
-	              <a href= <?php echo ("'./guardarVistaEventuales.php?usuario_rol=$usuarioSeguir'");?>><img  src="./img/upload1.png" alt="x" height="17" width="20"/> Guardar Documentos <center><b><i>(QR)</i></b></center></a>
-	          </li>
-	          <li class=" estilo-color">
-	              <a href= <?php echo ("'./actualizarFecha.php?usuario_rol=$usuarioSeguir'");?>><img  src="./img/calendarioMP.png" alt="x"height="25" width="25"/> Actualizar Fechas</a>
-	          </li>
-			  <li class=" estilo-color">
-	              <a href= <?php echo ("'./gEstructuraNomEv.php?usuario_rol=$usuarioSeguir'");?>><img  src="./img/icreport2.png" alt="x" height="17" width="20"/> Descargar Registros QR</a>
-	          </li>
-			  <li class=" estilo-color">
-	              <a href= <?php echo ("'./capturaRetardada.php?usuario_rol=$usuarioSeguir'");?>><img  src="./img/crearRpasados2.png" alt="x" height="20" width="25"/> Capturas Faltantes</a>
-	          </li>
-	          <br>
-	          <br>
-	          <br>
 	           <br>      
+			   <br>
+			   <br>
 	          <br>
 	          <br>
 	          <br>

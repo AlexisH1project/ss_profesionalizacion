@@ -302,14 +302,14 @@
     	<br><br><br><br>
 
     	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bordv plantilla-inputv fixed-top">
-			<img class="img-responsive" src="img/ss1.png" height="90" width="280"/>
+			<img class="img-responsive" src="img/ss1_up.png" height="90" width="280"/>
 		<div class="form-group">
 			<div class=" centrado">
 	        	<h3 class="estilo-colorn">Formulario   </h3>
 			</div>
 			 <br>
 			 <div class="centrado">
-		         <h5 class=" estilo-color ">Departamento Dirección General de Recursos Humanos y Organización/Dirección integral de puestos y servicios personales</h5>
+		         <h5 class=" estilo-colorg ">Departamento Dirección General de Recursos Humanos y Organización/Dirección integral de puestos y servicios personales</h5>
 			</div>
 		</div>
 		    <br>
@@ -344,7 +344,7 @@
 								<div class="form-group col-md-6">
 									<div class="col" >
 										<div class="md-form mt-0">
-										<label class="plantilla-label estilo-colorg" for="unexp_1">Unidad:</label>
+										<label class="plantilla-label estilo-colorg" for="unexp_1">*Unidad:</label>
 										<select class="form-control border border-dark mdb-select md-form" name="unidadSelct">
 															<?php
 															if (!$conexion->set_charset("utf8")) {//asignamos la codificación comprobando que no falle
@@ -365,7 +365,7 @@
 									<br>
 									<div class="col">
 										<div class="md-form mt-0">
-										<label class="plantilla-label estilo-colorg" for="domUR" >Domicilio Unidad: </label>
+										<label class="plantilla-label estilo-colorg" for="domUR" >*Domicilio Unidad: </label>
 										<input type="text"  type="text" class="form-control domUR border border-dark" id="domUR" name="domUR" placeholder="DOMICILIO" value="<?php if(isset($_POST["domUR"])){ echo $_POST["domUR"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 										</div>
 									</div>
@@ -375,7 +375,7 @@
 					</tbody>
 					</table>
 					
-					<input type="button" name="next" class="next btn btn-info" value="Siguiente" />
+					<input type="button" name="next" class="next btn btn-secondary color_boton" value="Siguiente" />
 				</fieldset>
 
 <!--*************************************************************** tabla TITULAR  -->
@@ -384,7 +384,7 @@
 					<table  class="table table-striped table-bordered">
 					<thead>
 						    <tr>
-								<th scope="titulo">TITULAR</th>
+								<th scope="titulo">COORDINADORES ADMINISTRATIVOS Y EQUIVALENTES DE LAS UNIDADES ADMINISTRATIVAS DEL SECTOR CENTRAL, TITULARES DE UNIDAD DE ADMINISTRACIÓN Y FINANZAS DE LOS ÓRGANOS ADMINISTRATIVOS DESCONCENTRADOS Y ENTIDADES PARAESTATALES SECTORIZADOS A LA SECRETARÍA DE SALUD DIRECTORES ADMINISTRATIVOS Y EQUIVALENTES EN LOS OPD´S RESPONSABLES DE LOS SERVICIOS DE SALUD DE LAS ENTIDADES FEDERATIVAS</th>
 							
 							</tr>
 					</thead>
@@ -394,13 +394,21 @@
 						<td>
 						<div class="form-group col-md-6">
 							<div class="form-group col-md-12" >	
-				  				<label class="plantilla-label estilo-colorg" for="nombreT">NOMBRE COMPLETO: </label>
+				  				<label class="plantilla-label estilo-colorg" for="rfcT">*RFC: (Titular de la Unidad)</label>
 							</div>
-
+							<div class="form-row">
+								<div class="col-2">
+								<div class="md-form mt-0">
+									<input type="text" class="form-control border border-dark" id="rfc_t" name="rfc_t" placeholder="RFC" value="<?php if(isset($_POST["rfc_t"])){ echo $_POST["rfc_t"];} ?>" maxlength="13"required>
+								</div>
+								</div>
+							</div>
+							<br>
+							<div class="form-group col-md-12" >	
+				  				<label class="plantilla-label estilo-colorg" for="nombreT">*NOMBRE COMPLETO: (Titular de la Unidad)</label>
+							</div>
 					  		<div class="form-row">
-				  			
 						      <input type="text" style="display:none;" class="form-control border border-dark" id="listaDoc" name="listaDoc" placeholder="Apellido Paterno" value="<?php if(isset($_POST["listaDoc"])){ echo $_POST["listaDoc"];} ?>" >
-
 				  			<div class="col">
 						      <div class="md-form mt-0">
 						        <input type="text" class="form-control border border-dark" id="apellido1" name="apellido1" placeholder="Apellido Paterno" value="<?php if(isset($_POST["apellido1"])){ echo $_POST["apellido1"];} ?>" maxlength="30"required>
@@ -422,46 +430,54 @@
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="puesto" >Puesto: </label>
+								<label class="plantilla-label estilo-colorg" for="puesto" >*Puesto: (Titular de la Unidad)</label>
 								<input type="text"  type="text" class="form-control domUR border border-dark" id="puesto" name="puesto" placeholder="puesto" value="<?php if(isset($_POST["puesto"])){ echo $_POST["puesto"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="dom_t" >Domicilio: </label>
+								<label class="plantilla-label estilo-colorg" for="dom_t" >*Domicilio de la unidad: </label>
 								<input type="text"  type="text" class="form-control domUR border border-dark" id="dom_titular" name="dom_titular" placeholder="Domicilio" value="<?php if(isset($_POST["dom_titular"])){ echo $_POST["dom_titular"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="correo" >Correo: </label>
-								<input type="mail"  class="form-control domUR border border-dark" id="correo" name="correo" placeholder="correo" value="<?php if(isset($_POST["correo"])){ echo $_POST["correo"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<label class="plantilla-label estilo-colorg" for="correo" >*Correo institucional: (Titular de la Unidad)</label>
+								<input type="mail"  class="form-control domUR border border-dark" id="correo" name="correo" placeholder="@" value="<?php if(isset($_POST["correo"])){ echo $_POST["correo"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								</div>
+							</div>
+							<br>
+							<div class="col">
+								<div class="md-form mt-0">
+								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Titular de la Unidad)</label>
+								<input type="mail"  class="form-control domUR border border-dark" id="correoA" name="correoA" placeholder="@" value="<?php if(isset($_POST["correoA"])){ echo $_POST["correoA"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 						<div class="form-row">
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="num_tel" >Número telefónico: </label>
+								<label class="plantilla-label estilo-colorg" for="num_tel" >*Número telefónico oficina: (Titular de la Unidad)</label>
 								<input type="text"  class="form-control domUR border border-dark" id="num_t" name="num_t" placeholder="telefóno" value="<?php if(isset($_POST["num_t"])){ echo $_POST["num_t"];} ?>" maxlength ="10"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
-								</div>
+							</div>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="ext" >Extensión: </label>
+								<label class="plantilla-label estilo-colorg" for="ext" >*Extensión: </label>
 								<input type="text"  class="form-control domUR border border-dark" id="ext" name="ext" placeholder="**" value="<?php if(isset($_POST["ext"])){ echo $_POST["ext"];} ?>" maxlength ="6" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 							</div>
 							</div>
 						</div>
+						<br>
 								</td>
 							</tr>	
 						</div>								
 					</tbody>
 					</table>
 					<input type="button" name="previous" class="previous btn btn-default" value="Previo" />
-  					<input type="button" name="next" class="next btn btn-info" value="Siguiente" />
+  					<input type="button" name="next" class="next btn btn-secondary color_boton" value="Siguiente" />
 			</fieldset>
 		
 <!--*************************************************************** tabla JEFATURA DE PROGRAMA   -->
@@ -478,9 +494,20 @@
 					<tbody>
 					<tr>
 						<td>
+					<div class="form-group col-md-12" >	
+							<label class="plantilla-label estilo-colorg" for="rfcT">*RFC: (Jefe del titular)</label>
+						</div>
+						<div class="form-row">
+							<div class="col-2">
+							<div class="md-form mt-0">
+								<input type="text" class="form-control border border-dark" id="rfc_t" name="rfc_t" placeholder="RFC" value="<?php if(isset($_POST["rfc_t"])){ echo $_POST["rfc_t"];} ?>" maxlength="13"required>
+							</div>
+							</div>
+						</div>
+						<br>
 						<div class="form-group col-md-6">
 							<div class="form-group col-md-12" >	
-				  				<label class="plantilla-label estilo-colorg" for="nombreT">NOMBRE COMPLETO: </label>
+				  				<label class="plantilla-label estilo-colorg" for="nombreT">*NOMBRE COMPLETO: (Jefe del titular)</label>
 							</div>
 
 					  		<div class="form-row">
@@ -506,47 +533,60 @@
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="puesto" >Puesto: </label>
+								<label class="plantilla-label estilo-colorg" for="puesto" >*Puesto: (Jefe del titular)</label>
 								<input type="text"  type="text" class="form-control domUR border border-dark" id="puesto_j" name="puesto_j" placeholder="puesto" value="<?php if(isset($_POST["puesto_j"])){ echo $_POST["puesto_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="dom_t" >Domicilio: </label>
+								<label class="plantilla-label estilo-colorg" for="dom_t" >*Domicilio de la Unidad: (Jefe del titular)</label>
 								<input type="text"  type="text" class="form-control domUR border border-dark" id="dom_titular_j" name="dom_titular_j" placeholder="Domicilio" value="<?php if(isset($_POST["dom_titular_j"])){ echo $_POST["dom_titular_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="correo" >Correo: </label>
-								<input type="mail"  class="form-control domUR border border-dark" id="correo_j" name="correo_j" placeholder="correo" value="<?php if(isset($_POST["correo_j"])){ echo $_POST["correo_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<label class="plantilla-label estilo-colorg" for="correo" >*Correo institucional: (Jefe del titular)</label>
+								<input type="mail"  class="form-control domUR border border-dark" id="correo_j" name="correo_j" placeholder="@" value="<?php if(isset($_POST["correo_j"])){ echo $_POST["correo_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								</div>
+							</div>
+							<br>
+							<div class="col">
+								<div class="md-form mt-0">
+								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Jefe del titular)</label>
+								<input type="mail"  class="form-control domUR border border-dark" id="correoA" name="correoA" placeholder="@" value="<?php if(isset($_POST["correoA"])){ echo $_POST["correoA"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 						<div class="form-row">
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="num_tel" >Número telefónico: </label>
+								<label class="plantilla-label estilo-colorg" for="num_tel" >*Número telefónico oficina: (Jefe del titular)</label>
 								<input type="text"  class="form-control domUR border border-dark" id="num_j" name="num_j" placeholder="telefóno" value="<?php if(isset($_POST["num_j"])){ echo $_POST["num_j"];} ?>" maxlength ="10" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 								</div>
+							<br>
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="ext" >Extensión: </label>
-								<input type="text"  class="form-control domUR border border-dark" id="ext_j" name="ext_j" placeholder="**" value="<?php if(isset($_POST["ext_j"])){ echo $_POST["ext_j"];} ?>" maxlength ="6" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="text"  class="form-control domUR border " id="ext_j" name="ext_j" placeholder="**" value="<?php if(isset($_POST["ext_j"])){ echo $_POST["ext_j"];} ?>" maxlength ="6" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+							</div>
+							</div>
+						</div>
+						<br>
+						<div class="form-row">
+							<div class="col-2">
+								<div class="md-form mt-0">
+								<label class="plantilla-label estilo-colorg" for="ext" >Número celular:</label>
+								<input type="text"  class="form-control domUR border border-dark" id="cel_j" name="cel_j" placeholder="celular" value="<?php if(isset($_POST["cel_j"])){ echo $_POST["cel_j"];} ?>" maxlength ="10" onkeyup="javascript:this.value=this.value.toUpperCase();" >
 							</div>
 							</div>
 						</div>
 								</td>
 							</tr>	
 						</div>								
-							<label class="plantilla-label estilo-colorg" for="ext" >Docsss: </label>
-
-							<input type="text" class="form-control" id="guardarDoc" name="guardarDoc" value="<?php if(isset($_POST["guardarDoc"])){ echo $_POST["guardarDoc"];} ?>" >
-								
-				
+							<input type="text" style = "display:none" class="form-control" id="guardarDoc" name="guardarDoc" value="<?php if(isset($_POST["guardarDoc"])){ echo $_POST["guardarDoc"];} ?>" >
 					</tbody>
 					</table>
 					
@@ -591,7 +631,7 @@
 										<td>
 											<div class="col">
 												<div class="md-form md-0">
-													<input type="button"  href="javascript:;" id = "<?php echo $documentoN; ?>" name="guardarAdj"  class="btn btn-outline-info tamanio-button" value="Guardar Documento"><br>
+													<input type="button"  href="javascript:;" id = "<?php echo $documentoN; ?>" name="guardarAdj"  class="btn btn btn-light border-dark tamanio-button" value="Guardar Documento"><br>
 												</div>	
 												<br>
 											</div>	
@@ -607,7 +647,7 @@
 					</table>
 					<!-- Resultado: <span id="resultado">0</span> -->
 						<input type="button" name="previous" class="previous btn btn-default" value="Previo" />
-						<input type="button" name="next" class="next btn btn-info" value="Siguiente" />
+						<input type="button" name="next" class="next btn btn-secondary color_boton" value="Siguiente" />
 		</fieldset>
 		
 <!--*************************************************************** tabla encargado del programa  -->
@@ -624,9 +664,20 @@
 					<tbody>
 					<tr>
 						<td>
+						<div class="form-group col-md-12" >	
+							<label class="plantilla-label estilo-colorg" for="rfcT">*RFC: (Encargado del Programa)</label>
+						</div>
+						<div class="form-row">
+							<div class="col-2">
+							<div class="md-form mt-0">
+								<input type="text" class="form-control border border-dark" id="rfc_ep" name="rfc_ep" placeholder="RFC" value="<?php if(isset($_POST["rfc_ep"])){ echo $_POST["rfc_ep"];} ?>" maxlength="13"required>
+							</div>
+							</div>
+						</div>
+						<br>
 						<div class="form-group col-md-6">
 							<div class="form-group col-md-12" >	
-				  				<label class="plantilla-label estilo-colorg" for="nombreT">NOMBRE COMPLETO: </label>
+				  				<label class="plantilla-label estilo-colorg" for="nombreT">*NOMBRE COMPLETO: (Encargado del Programa)</label>
 							</div>
 
 					  		<div class="form-row">
@@ -651,15 +702,29 @@
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="correo" >Correo: </label>
-								<input type="mail"  class="form-control domUR border border-dark" id="correo_ep" name="correo_ep" placeholder="correo" value="<?php if(isset($_POST["correo_ep"])){ echo $_POST["correo_ep"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<label class="plantilla-label estilo-colorg" for="puesto" >*Puesto: (Encargado del Programa)</label>
+								<input type="text"  type="text" class="form-control domUR border border-dark" id="puesto_ep" name="puesto_ep" placeholder="puesto" value="<?php if(isset($_POST["puesto_ep"])){ echo $_POST["puesto_ep"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								</div>
+							</div>
+							<br>
+							<div class="col">
+								<div class="md-form mt-0">
+								<label class="plantilla-label estilo-colorg" for="correo" >*Correo institucional: (Encargado del Programa)</label>
+								<input type="mail"  class="form-control domUR border border-dark" id="correo_ep" name="correo_ep" placeholder="@" value="<?php if(isset($_POST["correo_ep"])){ echo $_POST["correo_ep"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								</div>
+							</div>
+							<br>
+							<div class="col">
+								<div class="md-form mt-0">
+								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Encargado del Programa)</label>
+								<input type="mail"  class="form-control domUR border border-dark" id="correoA" name="correoA" placeholder="@" value="<?php if(isset($_POST["correoA"])){ echo $_POST["correoA"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 						<div class="form-row">
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="num_tel" >Número telefónico: </label>
+								<label class="plantilla-label estilo-colorg" for="num_tel" >*Número telefónico oficina: </label>
 								<input type="text"  class="form-control domUR border border-dark" id="num_ep" name="num_ep" placeholder="telefóno" value="<?php if(isset($_POST["num_ep"])){ echo $_POST["num_ep"];} ?>" maxlength ="10" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 								</div>
@@ -670,13 +735,22 @@
 							</div>
 							</div>
 						</div>
+						<br>
+						<div class="form-row">
+							<div class="col-2">
+								<div class="md-form mt-0">
+								<label class="plantilla-label estilo-colorg" for="ext" >Número celular: </label>
+								<input type="text"  class="form-control domUR border border-dark" id="cel_ep" name="cel_ep" placeholder="celular" value="<?php if(isset($_POST["cel_ep"])){ echo $_POST["cel_ep"];} ?>" maxlength ="10" onkeyup="javascript:this.value=this.value.toUpperCase();" >
+							</div>
+							</div>
+						</div>
 								</td>
 							</tr>	
 						</div>								
 					</tbody>
 				</table>
 				<input type="button" name="previous" class="previous btn btn-default" value="Previo" />
-  				<input type="submit" name="submit" class="submit btn btn-success" value="Enviar" id="submit_data" />
+  				<input type="submit" name="submit" class="submit btn btn-secondary color_botonEnv" value="Enviar" id="submit_data" />
 		</fieldset>
 					
 				<div class="col-md-8 col-md-offset-8">

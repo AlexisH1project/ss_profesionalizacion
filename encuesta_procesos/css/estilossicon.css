@@ -67,7 +67,7 @@
 			.estilo-colorn{
 				font-family: Montserrat, Medium;
 				font-size: 22px;
-				color:  #9f2241 ;
+				color:  #b38e5d ;
 				font-weight: bold;
 			}
 			.estilo-colorb{
@@ -115,7 +115,7 @@
 				padding: 25px;
 			}
 			.plantilla-inputv{
-				background-color: #fffaed;
+				background-color: #d4c19c;
 				font-family: Montserrat, Medium;
 				padding: 15px;
 			}
@@ -124,8 +124,13 @@
 				font-family: Montserrat, Medium;
 				padding: 12px;
 			}
+			.color_boton{
+				background-color: #285c4d;
+			}
 
-
+			.color_botonEnv{
+				background-color: #9f2241;
+			}
 		
 
 		
