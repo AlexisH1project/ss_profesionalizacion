@@ -399,7 +399,7 @@
 							<div class="form-row">
 								<div class="col-2">
 								<div class="md-form mt-0">
-									<input type="text" class="form-control border border-dark" id="rfc_t" name="rfc_t" placeholder="RFC" value="<?php if(isset($_POST["rfc_t"])){ echo $_POST["rfc_t"];} ?>" maxlength="13"required>
+									<input type="text" class="form-control border border-dark" id="rfc_u" name="rfc_u" placeholder="RFC" value="<?php if(isset($_POST["rfc_u"])){ echo $_POST["rfc_u"];} ?>" maxlength="13"required>
 								</div>
 								</div>
 							</div>
@@ -555,7 +555,7 @@
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Jefe del titular)</label>
-								<input type="mail"  class="form-control domUR border border-dark" id="correoA" name="correoA" placeholder="@" value="<?php if(isset($_POST["correoA"])){ echo $_POST["correoA"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="mail"  class="form-control domUR border border-dark" id="correoA_j" name="correoA_j" placeholder="@" value="<?php if(isset($_POST["correoA_j"])){ echo $_POST["correoA_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
@@ -717,7 +717,7 @@
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Encargado del Programa)</label>
-								<input type="mail"  class="form-control domUR border border-dark" id="correoA" name="correoA" placeholder="@" value="<?php if(isset($_POST["correoA"])){ echo $_POST["correoA"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="mail"  class="form-control domUR border border-dark" id="correoA_ep" name="correoA_ep" placeholder="@" value="<?php if(isset($_POST["correoA_ep"])){ echo $_POST["correoA_ep"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>

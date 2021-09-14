@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <?php
 include "configuracion.php";
 									$concatenarNombDoc = $_POST['guardarDoc'];
@@ -6,13 +7,19 @@ include "configuracion.php";
 
 								    $unidad = $_POST['unidadSelct'];
 									$domUr = $_POST['domUR'];
+									
+									$rfc_tur = $_POST['rfc_u']; // --------------------falta 
 									$listaCompleta = $_POST['listaDoc'];
 									$elApellido1 = strtoupper($_POST['apellido1']);
+
+
 									$elApellido2 = strtoupper($_POST['apellido2']);
 									$elNombre = strtoupper($_POST['nombre']);
 									$elPuesto = $_POST['puesto'];
 									$elDom_t = $_POST['dom_titular'];
 									$elCorreo_t = strtoupper($_POST['correo']);
+									$rfc_t = $_POST['rfc_t']; // --------------------falta 
+									$elCorreo_tA = strtoupper($_POST['correoA']); // --------------------falta
 									$elNum_t = $_POST['num_t'];
 									$laExt_t = $_POST['ext'];
 									
@@ -22,15 +29,21 @@ include "configuracion.php";
 									$elNombre_j = strtoupper($_POST['nombre_j']);
 									$elPuesto_j = $_POST['puesto_j'];
 									$elCorreo_j = strtoupper($_POST['correo_j']);
+									$elCorreo_jA = strtoupper($_POST['correoA_j']); // --------------------falta
 									$elNum_j = $_POST['num_j'];
 									$laExt_j = $_POST['ext_j'];
+									$elCel_j = $_POST['cel_j'];// --------------------falta
 									
+									$rfc_ep = $_POST['rfc_ep']; // --------------------falta 
 									$elApellido1_ep = strtoupper($_POST['apellido1_ep']);
 									$elApellido2_ep= strtoupper($_POST['apellido2_ep']);
 									$elNombre_ep= strtoupper($_POST['nombre_ep']);
 									$elCorreo_ep = strtoupper($_POST['correo_ep']);
+									$elCorreo_epA = strtoupper($_POST['correoA_ep']); // --------------------falta
 									$elNum_ep= $_POST['num_ep'];
 									$laExt_ep= $_POST['ext_ep'];
+									$elCel_ep = $_POST['cel_ep'];// --------------------falta
+
 
                                     // $bandera = 0;
 // if($bandera == 1){
@@ -60,28 +73,36 @@ include "configuracion.php";
                                    		$newsql = "INSERT INTO registro(
 											   					ur,
 																domicilio_ur,
+																rfc_t,
 																nombre_t,
 																apellido1_t,
 																apellido2_t,
 																puesto_t,
 																domicilio_t,
-																correo_t,
+																correo_oft,
+																correo_perst,
 																tel_t,
 																ext_t,
+																rfc_j,
 																nombre_j,
 																apellido1_j,
 																apellido2_j,
 																puesto_j,
 																domicilio_j,
-																correo_j,
+																correo_ofj,
+																correo_persj,
 																tel_j,
 																ext_j,
+																cel_j,
 																nombre_e,
 																apellido1_e,
 																apellido2_e,
-																correo_e,
+																puesto_e,
+																correo_ofe,
+																correo_perse,
 																tel_e,
 																ext_e,
+																cel_e,
 																ine,
 																fmp,
 																aur,
@@ -91,28 +112,36 @@ include "configuracion.php";
 																) VALUES (
 																	'$unidad',			
 																	'$domUr',
+																	'$rfc_tur',
 																	'$elNombre',
 																	'$elApellido1',
 																	'$elApellido2',
 																	'$elPuesto',
 																	'$elDom_t',
 																	'$elCorreo_t',
+																	'$elCorreo_tA',
 																	'$elNum_t',
 																	'$laExt_t',
+																	'$rfc_t',
 																	'$elNombre_j',
 																	'$elApellido1_j',
 																	'$elApellido2_j',
 																	'$elPuesto_j',
 																	'$elDom_j',
 																	'$elCorreo_j',
+																	'$elCorreo_jA',
 																	'$elNum_j',
 																	'$laExt_j',
+																	'$elCel_j',
+																	'$rfc_ep',
 																	'$elNombre_ep',
 																	'$elApellido1_ep',
 																	'$elApellido2_ep',
 																	'$elCorreo_ep',
+																	'$elCorreo_epA',
 																	'$elNum_ep',
 																	'$laExt_ep',
+																	'$elCel_ep',
 																	'',
 																	'',
 																	'',
@@ -127,6 +156,12 @@ include "configuracion.php";
 										//     	$res1Check = mysqli_num_rows($datasub2);
 		                                //    		$banderaid = $extid[0];
 		                                //    	}	
+			?>
+
+										<div class="alert alert-success">
+										<a href="../formu_p.php" class="alert-link">¡Bien! Tu registros fue correcto</a>
+										</div>
+<?php
                                    		}else{
                                                echo "NO SE HISO EL INSERT";
                                            }
