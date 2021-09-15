@@ -7,7 +7,7 @@ include "configuracion.php";
 								    $unidad = $_POST['unidadSelct'];
 									$domUr = $_POST['domUR'];
 									
-									$rfc_tur = $_POST['rfc_u']; // --------------------falta 
+									$rfc_tur = strtoupper($_POST['rfc_u']); // --------------------falta 
 									$listaCompleta = $_POST['listaDoc'];
 									$elApellido1 = strtoupper($_POST['apellido1']);
 
@@ -16,9 +16,9 @@ include "configuracion.php";
 									$elNombre = strtoupper($_POST['nombre']);
 									$elPuesto = $_POST['puesto'];
 									$elDom_t = $_POST['dom_titular'];
-									$elCorreo_t = strtoupper($_POST['correo']);
-									$rfc_t = $_POST['rfc_t']; // --------------------falta 
-									$elCorreo_tA = strtoupper($_POST['correoA']); // --------------------falta
+									$elCorreo_t = strtolower($_POST['correo']);
+									$rfc_t = strtoupper($_POST['rfc_t']); // --------------------falta 
+									$elCorreo_tA = strtolower($_POST['correoA']); // --------------------falta
 									$elNum_t = $_POST['num_t'];
 									$laExt_t = $_POST['ext'];
 									
@@ -27,19 +27,19 @@ include "configuracion.php";
 									$elApellido2_j = strtoupper($_POST['apellido2_j']);
 									$elNombre_j = strtoupper($_POST['nombre_j']);
 									$elPuesto_j = $_POST['puesto_j'];
-									$elCorreo_j = strtoupper($_POST['correo_j']);
-									$elCorreo_jA = strtoupper($_POST['correoA_j']); // --------------------falta
+									$elCorreo_j = strtolower($_POST['correo_j']);
+									$elCorreo_jA = strtolower($_POST['correoA_j']); // --------------------falta
 									$elNum_j = $_POST['num_j'];
 									$laExt_j = $_POST['ext_j'];
 									$elCel_j = $_POST['cel_j'];// --------------------falta
 									
-									$rfc_ep = $_POST['rfc_ep']; // --------------------falta 
+									$rfc_ep = strtoupper($_POST['rfc_ep']); // --------------------falta 
 									$elApellido1_ep = strtoupper($_POST['apellido1_ep']);
 									$elApellido2_ep= strtoupper($_POST['apellido2_ep']);
 									$elPuesto_ep = $_POST['puesto_ep'];
 									$elNombre_ep= strtoupper($_POST['nombre_ep']);
-									$elCorreo_ep = strtoupper($_POST['correo_ep']);
-									$elCorreo_epA = strtoupper($_POST['correoA_ep']); // --------------------falta
+									$elCorreo_ep = strtolower($_POST['correo_ep']);
+									$elCorreo_epA = strtolower($_POST['correoA_ep']); // --------------------falta
 									$elNum_ep= $_POST['num_ep'];
 									$laExt_ep= $_POST['ext_ep'];
 									$elCel_ep = $_POST['cel_ep'];// --------------------falta

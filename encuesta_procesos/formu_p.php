@@ -171,6 +171,7 @@
 			console.log("Se presionó el Boton con Id :"+ id);
 			console.log("el archivo es:" + rutaDoc);
 			var correoJ = $("#correo_j").val();
+			var elRfc = $("#rfc_t").val();
 			console.log("el correo:" + correoJ);
 
 			//***************************validamos que esten los inputs
@@ -195,6 +196,7 @@
 				console.log("File Seleccionado : ", files);
 					formData.append('file',files);
 					formData.append('correoJ',correoJ);
+					formData.append('elRfc',elRfc);
 					formData.append('id',id);
 					$.ajax({
 						url: './Controller/guardarDoc.php',

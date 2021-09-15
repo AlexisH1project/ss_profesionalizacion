@@ -3,32 +3,27 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Consulta</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="css/estilo_form.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-	<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script type="text/javascript" src="./jquery/jquery.tabledit.js"></script>
-		<script type="text/javascript" src="./jquery/jquery.tabledit.min.js"></script> -->
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href='css/jquery-ui.min.css' type='text/css' rel='stylesheet'>
 		<link href='css/jquery-ui.css' type='text/css' rel='stylesheet'>
 
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-		<script src="js/funciones.js?n=1"></script>
+		<script src="js/funciones.js"></script>
 		<script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
 		<script src="js/jquery-ui.min.js" type="text/javascript"></script>
 		<script src="js/jquery-ui.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="css/estilossicon.css">
 
-		<script src="jquery/jquery.tabledit.js" type="text/javascript"></script>
-		<script src="jquery/jquery.tabledit.min.js" type="text/javascript"></script>
-
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
 
 		<link rel="stylesheet" href="css/estilossicon.css">
+
 	<style type="text/css">
 			.derecha   { float: right; }
 			.izquierda   { float: left; }
@@ -205,6 +200,20 @@ tbody {
 
 			
 			});
+
+			function enviarRutaDoc(nombre){
+				var ruta = nombre;
+				let extencion = ruta.split('.');
+				ext =  extencion[2];
+				if(ext == "PDF" || ext == "pdf"){
+					$('#modalPDF').modal('show');
+					$('#idframePDF').attr('src',nombre);
+				}else{
+					$('#modalPDF').modal('hide');
+					verDoc(nombre,ext);
+				}
+			
+			}
 		</script>
 
 
@@ -215,6 +224,7 @@ tbody {
 			<?php
 				include "configuracion.php";
 				$usuarioSeguir =  $_GET['usuario_rol'];
+				$dir_subidaMov = './Controller/documentos/';
 				$consulta = "SELECT * FROM usuarios WHERE usuario = '$usuarioSeguir'";
 				if($resultadoSelect = mysqli_query($conexion, $consulta)){
 					$rowUser = mysqli_fetch_assoc($resultadoSelect);
@@ -353,6 +363,74 @@ tbody {
 	</div>
 					
 		<br>
+		<div class="table-responsive">
+		<table class="table table-striped table-bordered" style="margin-bottom: 0;  font-size:70%;" >
+			
+						<thead>
+						    <tr>
+							<!-- <td>Observacion</td>
+							<td>ID Fomope</td> -->
+							
+							<th scope="titulo" style="display: none;" class="sticky"></th>
+							<th scope="titulo"  style="text-align: center" class="sticky">Unidad</th>
+							 <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">RFC</th>
+							 <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">Puesto</th>
+							 <th scope="titulo" style="text-align: center" class="sticky">Correo institucional</th>
+							 <th scope="titulo" style="text-align: center" class="sticky">Correo personal</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">Telefono Oficina</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">INE</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">FOMOPE</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">ACUSE</th>
+						   </tr>
+						</thead>
+				 <tbody>
+				<?php
+			$sql = "SELECT * FROM registro WHERE color_estado = 'verde'";
+			
+			$idMatriz = 0;
+			$imprimirNoExiste = 0;
+			if ($result = mysqli_query($conexion,$sql)) {
+				 while($ver = mysqli_fetch_row($result)){
+							$nombreAdescargar = $ver[13]."_";
+						 ?>
+
+						<tr>
+							<td><?php echo $ver[1] ?></td>
+							<td><?php echo $ver[13] ?></td>
+							<td><?php echo $ver[17] ?></td>
+							<td><?php echo $ver[19] ?></td>
+							<td><?php echo $ver[20] ?></td>
+							<td><?php echo $ver[21]." Ext. ".$ver[22]?></td>
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'INE/'.$nombreAdescargar.'INE_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> INE</button>
+							</td>						
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'FMP/'.$nombreAdescargar.'FMP_.pdf';?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> FMP</button>
+							</td>
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'AUR/'.$nombreAdescargar.'AUR_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
+							</td>
+						</tr>
+						<?php 
+							//$matriz = array($idMatriz => $ver[0] );
+							$matriz[$idMatriz]= $ver[0];							
+							$idMatriz++;
+						}
+							
+						
+						}else{
+							echo '<script type="text/javascript">alert("Error en la conexion");</script>';
+							echo '<script type="text/javascript">alert("error '. mysqli_error($conexion).'");</script>';
+						}
+						?>
+						<td>
+							<h2>TOTAL:</h2>
+						</td>
+						<td>
+							<h3>	<?php echo $idMatriz; ?>	</h3>
+						</td>
+		 </tbody>
+		</table>
 	<?php
 
 			if(isset($_POST['buscar'])){// $_SERVER['REQUEST_METHOD'] == 'POST' if(){
@@ -398,12 +476,17 @@ tbody {
 							<th scope="titulo" style="display: none;" class="sticky"></th>
 							<th scope="titulo"  style="text-align: center" class="sticky">Unidad</th>
 							 <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">RFC</th>
+							 <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">Puesto</th>
 							 <th scope="titulo" style="text-align: center" class="sticky">Correo institucional</th>
 							 <th scope="titulo" style="text-align: center" class="sticky">Correo personal</th>
 						      <th scope="titulo"  style="text-align: center" class="sticky">Telefono Oficina</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">INE</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">FOMOPE</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">ACUSE</th>
 						   </tr>
 						</thead>
 				 <tbody>
+	
 				          <?php
 
 
@@ -425,22 +508,34 @@ tbody {
 														</div>');
 									//	$matrizEventuales = queryEventual($sql2,$imprimirNoExiste);
 								}else{
-									$ver = mysqli_fetch_row($result);
+						while($ver = mysqli_fetch_row($result)){
+							$nombreAdescargar = $ver[13]."_";
 						 ?>
 
-						<tr id="<?php echo $ver[0] ?>">
-							<!-- <td><b><h6><?php echo $ver[4] ?></b></h6><br><?php echo $ver[8]." ".$ver[6]." ".$ver[7] ?> </td> -->
+						<tr>
 							<td><?php echo $ver[1] ?></td>
-							<td><?php echo $ver[118] ?></td>
-							<td><?php echo $ver[42] ?></td>
-							<td><?php echo $ver[39] ?></td>
-							<td><?php echo $ver[125] ?></td>
+							<td><?php echo $ver[13] ?></td>
+							<td><?php echo $ver[17] ?></td>
+							<td><?php echo $ver[19] ?></td>
+							<td><?php echo $ver[20] ?></td>
+							<td><?php echo $ver[21]." Ext. ".$ver[22]?></td>
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'INE/'.$nombreAdescargar.'INE_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> INE</button>
+							</td>						
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'FMP/'.$nombreAdescargar.'FMP_.pdf';?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> FMP</button>
+							</td>
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'AUR/'.$nombreAdescargar.'AUR_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
+							</td>
 						</tr>
 						<?php 
 							//$matriz = array($idMatriz => $ver[0] );
 							$matriz[$idMatriz]= $ver[0];							
 							$idMatriz++;
+						}
 							}
+						
 						}else{
 							echo '<script type="text/javascript">alert("Error en la conexion");</script>';
 							echo '<script type="text/javascript">alert("error '. mysqli_error($conexion).'");</script>';
@@ -457,6 +552,19 @@ tbody {
 ?>
 		 </tbody>
 		</table>
+		<div class="modal fade bd-example-modal-lg" id="modalPDF" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+				<iframe id="idframePDF"
+					title="Archivo PDF"
+					frameborder="0"
+					width="100%"
+					height="600px"
+					>
+				</iframe>
+				</div>
+			</div>
+		</div>
 		<br>
 		<br>
 	</div>

@@ -1,17 +1,18 @@
 <?php
             include "./configuracion.php";
             $elCorreo_j = $_POST['correoJ'];
+            $elRfc = $_POST['elRfc'];
             $nombreArch = $_POST['id'];
 
-            $hoy = "select CURDATE()";
-            $tiempo ="select curTime()";
+        //     $hoy = "select CURDATE()";
+        //     $tiempo ="select curTime()";
 
-             if ($resultHoy = mysqli_query($conexion,$hoy) AND $resultTime = mysqli_query($conexion,$tiempo)) {
-                     $fechaArray = mysqli_fetch_row($resultHoy);
-                     $horaArray = mysqli_fetch_row($resultTime);
-             }
-            $h_id = str_replace ( ":", '',$horaArray[0] ); 
-            $f_id = str_replace ( "-", '',$fechaArray[0] ); 
+        //      if ($resultHoy = mysqli_query($conexion,$hoy) AND $resultTime = mysqli_query($conexion,$tiempo)) {
+        //              $fechaArray = mysqli_fetch_row($resultHoy);
+        //              $horaArray = mysqli_fetch_row($resultTime);
+        //      }
+        //     $h_id = str_replace ( ":", '',$horaArray[0] ); 
+        //     $f_id = str_replace ( "-", '',$fechaArray[0] ); 
             // consultamos para saber el id y el nombre corto del nombre 
             $sqlRolDoc = "SELECT id_doc, documentos FROM ct_documentos WHERE prefijo = '$nombreArch'";
             $resRol=mysqli_query($conexion, $sqlRolDoc);
@@ -56,7 +57,7 @@
 
         if (move_uploaded_file($_FILES['file']['tmp_name'], $fichero_subido)) {
             sleep(3);
-            $concatenarNombreC = $dir_subida.strtoupper($elCorreo_j."_".$idDoc[1]."_".$f_id.$h_id."_.".$extencion3);
+            $concatenarNombreC = $dir_subida.strtoupper($elRfc."_".$idDoc[1]."_.".$extencion3);
             rename ($fichero_subido,$concatenarNombreC);
             $resultado = $nombreArch ; 
             echo $resultado ; 
