@@ -430,8 +430,7 @@ tbody {
 
 						<tr id="<?php echo $ver[0] ?>">
 							<!-- <td><b><h6><?php echo $ver[4] ?></b></h6><br><?php echo $ver[8]." ".$ver[6]." ".$ver[7] ?> </td> -->
-							<td><?php echo $ver[s1] ?></td>
-							<!--QNA CAP: $ver[14] -->
+							<td><?php echo $ver[1] ?></td>
 							<td><?php echo $ver[118] ?></td>
 							<td><?php echo $ver[42] ?></td>
 							<td><?php echo $ver[39] ?></td>
