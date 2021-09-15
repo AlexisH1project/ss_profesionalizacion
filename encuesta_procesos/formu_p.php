@@ -43,43 +43,27 @@
 
 
 		  <style>
-		  .modal-header, h4, .close {
-		    background-color: #5cb85c;
-		    color:white !important;
-		    text-align: center;
-		    font-size: 30px;
-		  }
-		  .modal-footer {
-		    background-color: #f9f9f9;
-		  }
+			body {
+					background-image: url(img/fondo5.png);
+					/* background-color:#FF0000; */
+					background-size: cover;
+					/* font-family: "Roboto", sans-serif; */
+					padding-top: 56px;
+			}
+			
+			.table.table-center {
+			width: auto;
+			margin: 0 auto;
+			}
 
-		   tbody {
-		      display:block;
-		      max-height:500px;
-		      overflow-y:auto;
-		  }
-		  thead, tbody tr {
-		      display:table;
-		      width:180%;
-		      table-layout:fixed;
-		  }
-		  thead {
-		      width: calc( 100% - 1em )
-		  } 
-
-		  .centrado{
+		  	.centrado{
 			  text-align:center;
 			}
 
 			#regiration_form fieldset:not(:first-of-type) {
 				display: none;
 			}
-			.close {
-			background-image: url('img/qr.png')
-			}
-			.burger {
-			background-image: url('img/upload1.png')
-			}
+		
 		  </style>
 
 		<script type="text/javascript">
@@ -129,7 +113,7 @@
 					// var = $("#documentoSelct").val();
 					// var = $("#guardarDoc").val();
 					// var = $("#id_env").val();
-
+					
 
 					// var = $("#unexp_1").val();
 					// var = $("#domUR").val();
@@ -266,9 +250,6 @@
 			// });
 		});
 
-		
-
-
 		function listaDeDoc(listaEnviar){
 			// document.getElementById("listaDoc").value = text;
 			document.getElementById("guardarDoc").value = listaEnviar;
@@ -278,7 +259,7 @@
 <script src="js/funciones.js"></script>
 		
 	</head>
-	<body onload="nobackbutton();">
+	<body style="body" onload="nobackbutton();">
     	
 		<?php 
 			include "Controller/configuracion.php";
@@ -301,8 +282,8 @@
 
     	<br><br><br><br>
 
-    	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bordv plantilla-inputv fixed-top">
-			<img class="img-responsive" src="img/ss1_up.png" height="90" width="280"/>
+    	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bordv plantilla-inputve fixed-top">
+			<img class="img-responsive" src="img/ss1.png" height="90" width="280"/>
 		<div class="form-group">
 			<div class=" centrado">
 	        	<h3 class="estilo-colorn">Formulario   </h3>
@@ -341,7 +322,7 @@
 					<tbody>
 							<tr>
 								<td>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<div class="col" >
 										<div class="md-form mt-0">
 										<label class="plantilla-label estilo-colorg" for="unexp_1">*Unidad:</label>
@@ -392,7 +373,7 @@
 					<tbody>
 					<tr>
 						<td>
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-12">
 							<div class="form-group col-md-12" >	
 				  				<label class="plantilla-label estilo-colorg" for="rfcT">*RFC: (Titular de la Unidad)</label>
 							</div>
@@ -495,7 +476,7 @@
 					<tr>
 						<td>
 					<div class="form-group col-md-12" >	
-							<label class="plantilla-label estilo-colorg" for="rfcT">*RFC: (Jefe del titular)</label>
+							<label class="plantilla-label estilo-colorg" for="rfcT">*RFC: (Jefatura del Programa)</label>
 						</div>
 						<div class="form-row">
 							<div class="col-2">
@@ -505,9 +486,9 @@
 							</div>
 						</div>
 						<br>
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-12">
 							<div class="form-group col-md-12" >	
-				  				<label class="plantilla-label estilo-colorg" for="nombreT">*NOMBRE COMPLETO: (Jefe del titular)</label>
+				  				<label class="plantilla-label estilo-colorg" for="nombreT">*NOMBRE COMPLETO: (Jefatura del Programa)</label>
 							</div>
 
 					  		<div class="form-row">
@@ -533,28 +514,28 @@
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="puesto" >*Puesto: (Jefe del titular)</label>
+								<label class="plantilla-label estilo-colorg" for="puesto" >*Puesto: (Jefatura del Programa)</label>
 								<input type="text"  type="text" class="form-control domUR border border-dark" id="puesto_j" name="puesto_j" placeholder="puesto" value="<?php if(isset($_POST["puesto_j"])){ echo $_POST["puesto_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="dom_t" >*Domicilio de la Unidad: (Jefe del titular)</label>
+								<label class="plantilla-label estilo-colorg" for="dom_t" >*Domicilio de la Unidad: (Jefatura del Programa)</label>
 								<input type="text"  type="text" class="form-control domUR border border-dark" id="dom_titular_j" name="dom_titular_j" placeholder="Domicilio" value="<?php if(isset($_POST["dom_titular_j"])){ echo $_POST["dom_titular_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="correo" >*Correo institucional: (Jefe del titular)</label>
+								<label class="plantilla-label estilo-colorg" for="correo" >*Correo institucional: (Jefatura del Programa)</label>
 								<input type="mail"  class="form-control domUR border border-dark" id="correo_j" name="correo_j" placeholder="@" value="<?php if(isset($_POST["correo_j"])){ echo $_POST["correo_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Jefe del titular)</label>
+								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Jefatura del Programa)</label>
 								<input type="mail"  class="form-control domUR border border-dark" id="correoA_j" name="correoA_j" placeholder="@" value="<?php if(isset($_POST["correoA_j"])){ echo $_POST["correoA_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
@@ -562,15 +543,15 @@
 						<div class="form-row">
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="num_tel" >*Número telefónico oficina: (Jefe del titular)</label>
+								<label class="plantilla-label estilo-colorg" for="num_tel" >*Número telefónico oficina: (Jefatura del Programa)</label>
 								<input type="text"  class="form-control domUR border border-dark" id="num_j" name="num_j" placeholder="telefóno" value="<?php if(isset($_POST["num_j"])){ echo $_POST["num_j"];} ?>" maxlength ="10" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 								</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="ext" >Extensión: </label>
-								<input type="text"  class="form-control domUR border " id="ext_j" name="ext_j" placeholder="**" value="<?php if(isset($_POST["ext_j"])){ echo $_POST["ext_j"];} ?>" maxlength ="6" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<label class="plantilla-label estilo-colorg" for="ext" >*Extensión: </label>
+								<input type="text"  class="form-control domUR border border-dark" id="ext_j" name="ext_j" placeholder="**" value="<?php if(isset($_POST["ext_j"])){ echo $_POST["ext_j"];} ?>" maxlength ="6" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 							</div>
 							</div>
 						</div>
@@ -578,7 +559,7 @@
 						<div class="form-row">
 							<div class="col-2">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="ext" >Número celular:</label>
+								<label class="plantilla-label estilo-colorg" for="ext" >Número de contacto (celular):</label> 
 								<input type="text"  class="form-control domUR border border-dark" id="cel_j" name="cel_j" placeholder="celular" value="<?php if(isset($_POST["cel_j"])){ echo $_POST["cel_j"];} ?>" maxlength ="10" onkeyup="javascript:this.value=this.value.toUpperCase();" >
 							</div>
 							</div>
@@ -608,7 +589,7 @@
 									$documentoN = $documentoN . $contador;
 								?>
 									<tr>
-										<td WIDTH="20%" HEIGHT="20%">
+										<td >
 										<?php echo $listDoc["nombre_documento"]; ?>
 											<div class="col">
 													<input type="text" class="form-control border border-dark" style = "display:none" id="validarDoc" name="validarDoc" value="<?php if(isset($_POST["validarDoc"])){ echo $_POST["validarDoc"];}else{ echo "HOLA"; } ?>" >
@@ -620,7 +601,7 @@
 													</p>
 											</div>	
 										</td>
-										<td WIDTH="20%" HEIGHT="20%">
+										<td >
 											<div class="col-3">
 												<div class="md-form md-0">
 													<input type="file" id="<?php echo "nameFile".$documentoN; ?>" name="nameArchivo" required>
@@ -675,7 +656,7 @@
 							</div>
 						</div>
 						<br>
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-12">
 							<div class="form-group col-md-12" >	
 				  				<label class="plantilla-label estilo-colorg" for="nombreT">*NOMBRE COMPLETO: (Encargado del Programa)</label>
 							</div>
@@ -730,7 +711,7 @@
 								</div>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="ext" >Extensión: </label>
+								<label class="plantilla-label estilo-colorg" for="ext" >*Extensión: </label>
 								<input type="text"  class="form-control domUR border border-dark" id="ext_ep" name="ext_ep" placeholder="**" value="<?php if(isset($_POST["ext_ep"])){ echo $_POST["ext_ep"];} ?>" maxlength ="6" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 							</div>
 							</div>
@@ -739,7 +720,7 @@
 						<div class="form-row">
 							<div class="col-2">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="ext" >Número celular: </label>
+								<label class="plantilla-label estilo-colorg" for="ext" >Número de contacto (celular): </label>
 								<input type="text"  class="form-control domUR border border-dark" id="cel_ep" name="cel_ep" placeholder="celular" value="<?php if(isset($_POST["cel_ep"])){ echo $_POST["cel_ep"];} ?>" maxlength ="10" onkeyup="javascript:this.value=this.value.toUpperCase();" >
 							</div>
 							</div>

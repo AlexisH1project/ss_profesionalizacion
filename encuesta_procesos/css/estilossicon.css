@@ -114,13 +114,13 @@
 				font-family: Montserrat, Medium;
 				padding: 25px;
 			}
-			.plantilla-inputv{
-				background-color: #d4c19c;
+			.plantilla-inputvFormu{
+				background-color: #ffffff;
 				font-family: Montserrat, Medium;
 				padding: 15px;
 			}
 			.plantilla-inputve{
-				background-color: #f2ebd7;
+				background-color: #d4c19c;
 				font-family: Montserrat, Medium;
 				padding: 12px;
 			}
@@ -131,8 +131,6 @@
 			.color_botonEnv{
 				background-color: #9f2241;
 			}
-		
-
 		
 
 		</style>

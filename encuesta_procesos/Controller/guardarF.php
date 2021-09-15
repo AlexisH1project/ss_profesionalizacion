@@ -3,8 +3,7 @@
 include "configuracion.php";
 									$concatenarNombDoc = $_POST['guardarDoc'];
 									$leerMov = $_POST['id_env'];
-
-
+									
 								    $unidad = $_POST['unidadSelct'];
 									$domUr = $_POST['domUR'];
 									
@@ -37,6 +36,7 @@ include "configuracion.php";
 									$rfc_ep = $_POST['rfc_ep']; // --------------------falta 
 									$elApellido1_ep = strtoupper($_POST['apellido1_ep']);
 									$elApellido2_ep= strtoupper($_POST['apellido2_ep']);
+									$elPuesto_ep = $_POST['puesto_ep'];
 									$elNombre_ep= strtoupper($_POST['nombre_ep']);
 									$elCorreo_ep = strtoupper($_POST['correo_ep']);
 									$elCorreo_epA = strtoupper($_POST['correoA_ep']); // --------------------falta
@@ -94,6 +94,7 @@ include "configuracion.php";
 																tel_j,
 																ext_j,
 																cel_j,
+																rfc_e,
 																nombre_e,
 																apellido1_e,
 																apellido2_e,
@@ -137,6 +138,7 @@ include "configuracion.php";
 																	'$elNombre_ep',
 																	'$elApellido1_ep',
 																	'$elApellido2_ep',
+																	'$elPuesto_ep',
 																	'$elCorreo_ep',
 																	'$elCorreo_epA',
 																	'$elNum_ep',
@@ -162,9 +164,7 @@ include "configuracion.php";
 										<a href="../formu_p.php" class="alert-link">¡Bien! Tu registros fue correcto</a>
 										</div>
 <?php
-                                   		}else{
+                                   		 }else{
                                                echo "NO SE HISO EL INSERT";
                                            }
-                                   	// }
-
 ?>
