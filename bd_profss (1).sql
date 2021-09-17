@@ -195,7 +195,8 @@ CREATE TABLE `registro` (
   `color_estado` varchar(15) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `usuario_asignado` varchar(65) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `password_asignado` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `fechaEnvioUsuario` varchar(10) COLLATE utf8mb4_spanish2_ci NOT NULL
+  `fechaEnvioUsuario` varchar(10) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `motivo_rechazo` varchar(2) COLLATE utf8mb4_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --

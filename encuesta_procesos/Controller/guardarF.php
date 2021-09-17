@@ -149,7 +149,10 @@ include "configuracion.php";
 																	'',
 																	'$fechaArray[0]',
 																	'$f_id$h_id',
-																	'verde'
+																	'verde',
+																	'',
+																	'',
+																	''
 																)";
 
                                    		if($datasub = mysqli_query($conexion,$newsql)){

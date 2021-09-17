@@ -48,96 +48,98 @@ tbody {
 }
 
 		th, td{
-			min-width: 150px;
-			max-width: 151px;
+			min-width: 190px;
+			max-width: 200px;
 		}
 
-.container-4 input#search{
-  width: 130px;
-  height: 30px;
-  background: #fff;
-  border: none;
-   font-size: 10pt;
- font-family: 'Arial', sans-serif;
- font-weight: 400;
-  float: left;
-  color: #00000;
-  padding-left: 15px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
+			.container-4 input#search{
+			width: 130px;
+			height: 30px;
+			background: #fff;
+			border: none;
+			font-size: 10pt;
+			font-family: 'Arial', sans-serif;
+			font-weight: 400;
+			float: left;
+			color: #00000;
+			padding-left: 15px;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			}
 
-.container-4 button.icon{
-  -webkit-border-top-right-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -moz-border-radius-bottomright: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
- 
-  border: none;
-  background: #fff;
-  height: 30px;
-  width: 50px;
-  color: #4f5b66;
-  opacity: 0;
-  font-size: 10pt;
- 
-  -webkit-transition: all .55s ease;
-  -moz-transition: all .55s ease;
-  -ms-transition: all .55s ease;
-  -o-transition: all .55s ease;
-  transition: all .55s ease;
-}
+			.container-4 button.icon{
+			-webkit-border-top-right-radius: 5px;
+			-webkit-border-bottom-right-radius: 5px;
+			-moz-border-radius-topright: 5px;
+			-moz-border-radius-bottomright: 5px;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+			
+			border: none;
+			background: #fff;
+			height: 30px;
+			width: 50px;
+			color: #4f5b66;
+			opacity: 0;
+			font-size: 10pt;
+			
+			-webkit-transition: all .55s ease;
+			-moz-transition: all .55s ease;
+			-ms-transition: all .55s ease;
+			-o-transition: all .55s ease;
+			transition: all .55s ease;
+			}
 
-.container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon{
-    outline: none;
-    opacity: 1;
-    margin-left: -50px;
-  }
- 
-  .container-4:hover button.icon:hover{
-    background: white;
-  }
+			.container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon{
+				outline: none;
+				opacity: 1;
+				margin-left: -50px;
+			}
+			
+			.container-4:hover button.icon:hover{
+				background: white;
+			}
 
-  .select-css {
- display: block;
- font-size: 10pt;
- font-family: 'Arial', sans-serif;
- height: 30px;
- font-weight: 400;
- color: #4f5b66;
- line-height: 1.3;
- padding: .4em 1.4em .3em .8em;
- width: 110px;
- max-width: 100%; 
- box-sizing: border-box;
- margin: 0;
- border: 1px solid #aaa;
- box-shadow: 0 1px 0 1px rgba(0,0,0,.03);
- border-radius: .3em;
- -moz-appearance: none;
- -webkit-appearance: none;
- appearance: none;
- background-color: #fff;
- background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
-   linear-gradient(to bottom, #ffffff 0%,#f7f7f7 100%);
- background-repeat: no-repeat, repeat;
- background-position: right .7em top 50%, 0 0;
- background-size: .65em auto, 100%;
-}
-.select-css::-ms-expand {
- display: none;
-}
-.select-css:hover {
- border-color: #888;
-}
+			.select-css {
+			display: block;
+			font-size: 10pt;
+			font-family: 'Arial', sans-serif;
+			height: 30px;
+			font-weight: 400;
+			color: #4f5b66;
+			line-height: 1.3;
+			padding: .4em 1.4em .3em .8em;
+			width: 110px;
+			max-width: 100%; 
+			box-sizing: border-box;
+			margin: 0;
+			border: 1px solid #aaa;
+			box-shadow: 0 1px 0 1px rgba(0,0,0,.03);
+			border-radius: .3em;
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			appearance: none;
+			background-color: #fff;
+			background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+			linear-gradient(to bottom, #ffffff 0%,#f7f7f7 100%);
+			background-repeat: no-repeat, repeat;
+			background-position: right .7em top 50%, 0 0;
+			background-size: .65em auto, 100%;
+			}
+			.select-css::-ms-expand {
+			display: none;
+			}
+			.select-css:hover {
+			border-color: #888;
+			}
 
-.select-css option {
- font-weight:normal;
-}
-
+			.select-css option {
+			font-weight:normal;
+			}
+			input {
+			text-transform: none;
+			}
 		  </style>
 
 
@@ -214,6 +216,29 @@ tbody {
 				}
 			
 			}
+
+			function eliminarReq_aceptar(){
+				$('#MotivoRechazoCap').removeAttr("required");
+			}
+
+			function eliminarReq_rechazo(){
+				$('#user').removeAttr("required");
+				$('#passw').removeAttr("required");
+			}
+
+			function escribirIdReg(id){
+				console.log("el id REGISTRO ES: "+ id);
+				
+				document.getElementById('id_reg').value = id;
+			}
+
+			function escribirIdRegR(id){
+				console.log("el id REGISTRO ES: "+ id);
+				
+				document.getElementById('id_regR').value = id;
+			}
+			
+
 		</script>
 
 
@@ -363,6 +388,9 @@ tbody {
 	</div>
 					
 		<br>
+		<div class="card bg-secondary text-white">
+						<div class="card-body plantilla-inputg"><h2>Registros Actuales</h2></div>
+		</div>
 		<div class="table-responsive">
 		<table class="table table-striped table-bordered" style="margin-bottom: 0;  font-size:70%;" >
 			
@@ -410,6 +438,12 @@ tbody {
 							<td>
 								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'AUR/'.$nombreAdescargar.'AUR_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
 							</td>
+							<td>
+								<button type="button" name="aceptarUser" id="aceptarUser" class="btn btn-secondary color_boton" onclick="escribirIdReg(<?php echo $ver[0]; ?>)" data-toggle="modal" data-target="#aceptarUserModal" >Aceptar</button>
+							</td>
+							<td>
+								<button type="button" name="rechazoInicial" id="rechazoInicial" class="btn btn-danger" onclick="escribirIdRegR(<?php echo $ver[0]; ?>)" data-toggle="modal" data-target="#RechInicial" >Rechazar</button>
+							</td>
 						</tr>
 						<?php 
 							//$matriz = array($idMatriz => $ver[0] );
@@ -431,6 +465,87 @@ tbody {
 						</td>
 		 </tbody>
 		</table>
+<!-- *************************************************************tabla de rechazos -->
+		<div class="card bg-secondary text-white">
+						<div class="card-body plantilla-inputg"><h2>Rechazos</h2></div>
+		</div>
+		<div class="table-responsive">
+		<table class="table table-striped table-bordered" style="margin-bottom: 0;  font-size:70%;" >
+			
+						<thead>
+						    <tr>
+							<!-- <td>Observacion</td>
+							<td>ID Fomope</td> -->
+							
+							<th scope="titulo" style="display: none;" class="sticky"></th>
+							<th scope="titulo"  style="text-align: center" class="sticky">Unidad</th>
+							 <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">RFC</th>
+							 <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">Puesto</th>
+							 <th scope="titulo" style="text-align: center" class="sticky">Correo institucional</th>
+							 <th scope="titulo" style="text-align: center" class="sticky">Correo personal</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">Telefono Oficina</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">INE</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">FOMOPE</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">ACUSE</th>
+						   </tr>
+						</thead>
+				 <tbody>
+				<?php
+			$sql = "SELECT * FROM registro WHERE color_estado = 'negro'";
+			
+			$idMatriz = 0;
+			$imprimirNoExiste = 0;
+			if ($result = mysqli_query($conexion,$sql)) {
+				 while($ver = mysqli_fetch_row($result)){
+							$nombreAdescargar = $ver[13]."_";
+						 ?>
+
+						<tr>
+							<td><?php echo $ver[1] ?></td>
+							<td><?php echo $ver[13] ?></td>
+							<td><?php echo $ver[17] ?></td>
+							<td><?php echo $ver[19] ?></td>
+							<td><?php echo $ver[20] ?></td>
+							<td><?php echo $ver[21]." Ext. ".$ver[22]?></td>
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'INE/'.$nombreAdescargar.'INE_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> INE</button>
+							</td>						
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'FMP/'.$nombreAdescargar.'FMP_.pdf';?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> FMP</button>
+							</td>
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'AUR/'.$nombreAdescargar.'AUR_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
+							</td>
+							<td>
+								<button type="button" name="aceptarUser" id="aceptarUser" class="btn btn-secondary color_boton" onclick="escribirIdReg(<?php echo $ver[0]; ?>)" data-toggle="modal" data-target="#aceptarUserModal" >Aceptar</button>
+							</td>
+							<td>
+								<button type="button" name="rechazoInicial" id="rechazoInicial" class="btn btn-danger" onclick="escribirIdRegR(<?php echo $ver[0]; ?>)" data-toggle="modal" data-target="#RechInicial" >Rechazar</button>
+							</td>
+						</tr>
+						<?php 
+							//$matriz = array($idMatriz => $ver[0] );
+							$matriz[$idMatriz]= $ver[0];							
+							$idMatriz++;
+						}
+							
+						
+						}else{
+							echo '<script type="text/javascript">alert("Error en la conexion");</script>';
+							echo '<script type="text/javascript">alert("error '. mysqli_error($conexion).'");</script>';
+						}
+						?>
+						<td>
+							<h2>TOTAL:</h2>
+						</td>
+						<td>
+							<h3>	<?php echo $idMatriz; ?>	</h3>
+						</td>
+		 </tbody>
+		</table>
+
+
+
 	<?php
 
 			if(isset($_POST['buscar'])){// $_SERVER['REQUEST_METHOD'] == 'POST' if(){
@@ -528,6 +643,12 @@ tbody {
 							<td>
 								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'AUR/'.$nombreAdescargar.'AUR_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
 							</td>
+							<td>
+								<button type="button" name="rechazoInicial" id="rechazoInicial" class="btn btn-danger" data-toggle="modal" data-target="#RechInicial" >Rechazar</button>
+							</td>
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'AUR/'.$nombreAdescargar.'AUR_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
+							</td>
 						</tr>
 						<?php 
 							//$matriz = array($idMatriz => $ver[0] );
@@ -569,6 +690,77 @@ tbody {
 		<br>
 	</div>
 	</div>	
+	<!-- *******************************model aceptar con todo y user -->
+					<div class="modal fade" id="aceptarUserModal" tabindex="-1" role="dialog" aria-labelledby="aceptarUserModal" aria-hidden="true">
+						<form method="post" action="./Controller/aceptarReg.php">
+							  
+							<div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="aceptarUserModal">ACEPTAR</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+									  <div class="form-row">
+										  <div class="col">
+											  <div class="form-group col-md-8">
+												<img src="./img/user.png" height="17" width="20" id='userImg' class="col-sm-2">
+												<input type="text" class="form-control border-dark text-transform: lowercase" value="<?php if(isset($_POST['user'])){ echo $_POST['user']; } ?>" placeholder ="Usuario/Correo" id="user" name="user" required>
+											</div>
+											<input type="text" style= "display:none" class="form-control border-dark" id="id_reg" name="id_reg">
+											<input type="text" style= "display:none" class="form-control border-dark" id="usuario_rol" value='<?php  echo $usuarioSeguir; ?>' name="usuario_rol">
+
+										<div class="form-group col-md-8">
+											<img src="./img/pass.png" height="17" width="20" id='userImg' class="col-sm-2">
+									  		<input type="text" class="form-control border-dark" value="<?php if(isset($_POST['passw'])){ echo $_POST['passw']; } ?>" placeholder ="Contraseña" id="passw" name="passw" required>
+									  	</div>
+									</div>
+								  </div>
+									
+										
+
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-dismiss="modal">REGRESAR</button>
+									<input type="submit" class="submit btn btn-secondary color_boton" id="aceptaR" onclick="eliminarReq_aceptar()" name="accionA"  value="Aceptar">
+							      </div>
+							     
+							    </div>
+							  </div>
+							</div>
+						</form>
+					</div>
+
+<!-- *********************model del RECHAZO  -->
+					 <div class="modal fade" id="RechInicial" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<form method="post" action="./Controller/rechazarReg.php">
+						 	
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="exampleModalLabel">Rechazo por captura</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							         <textarea class="form-control border border-dark" id="MotivoRechazoCap" rows = "4" name="comentarioR2" placeholder="Redactar rechazo" required></textarea>
+									 <input type="text" style= "display:none" class="form-control border-dark" id="id_regR" name="id_regR">
+									 <input type="text" style= "display:none" class="form-control border-dark" id="usuario_rol" value='<?php  echo $usuarioSeguir; ?>' name="usuario_rol">
+							       
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-dismiss="modal">REGRESAR</button>
+									<input type="submit" class="btn btn-danger" id="rechI" onclick="eliminarReq_rechazo()" name="accionR"  value="Aceptar rechazo por captura">
+							      </div>
+							     
+										</div>
+									</div>
+								</div>
+							</form>
+
+				</div>
+
 					<form method="post" action="./generarFiltroExcel/reporteBusqueda.php">
 							<input type='hidden' name='array' class='btn btn btn-success text-white bord' value='<?php  echo serialize($matriz); ?>'>
 							<input type='hidden' name='usuario_rol' class='btn btn btn-success text-white bord' value='<?php  echo $usuarioSeguir; ?>'>
