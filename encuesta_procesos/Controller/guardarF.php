@@ -109,7 +109,11 @@ include "configuracion.php";
 																aur,
 																fechaCaptura,
 																id_doc,
-																color_estado				
+																color_estado,
+																usuario_asignado,
+																password_asignado,
+																fechaEnvioUsuario,
+																motivo_rechazo
 																) VALUES (
 																	'$unidad',			
 																	'$domUr',
@@ -152,6 +156,7 @@ include "configuracion.php";
 																	'verde',
 																	'',
 																	'',
+																	'',
 																	''
 																)";
 
@@ -164,10 +169,16 @@ include "configuracion.php";
 			?>
 
 										<div class="alert alert-success">
-										<a href="../formu_p.php" class="alert-link">¡Bien! Tu registros fue correcto</a>
+											¡Bien! Tu Solicitud fue enviada correctamente
+											<a href="../formu_p.php" class="alert-link">Salir</a>
 										</div>
 <?php
                                    		 }else{
-                                               echo "NO SE HISO EL INSERT";
+?>
+											<div class="alert alert-danger">
+												¡Error! 
+											<a href="../formu_p.php" class="alert-link">Intentar de nuevo </a>
+											</div> 
+<?php											
                                            }
 ?>

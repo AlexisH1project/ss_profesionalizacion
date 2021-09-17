@@ -298,10 +298,8 @@
 		    <br>
 		    <br>
 		  </nav>
-
-		 <div id="content" class="p-4 p-md-5 pt-5">
-
 		<center>
+		<br>
 		<div class="progress">
 			<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
 		</div>
@@ -309,7 +307,25 @@
 				<form  enctype="multipart/form-data" id="regiration_form"  name="captura1" action="./Controller/guardarF.php" method="POST"> 
 				
 				<fieldset>
+				<br>
 
+				<div class="form-group col-md-12">
+				<div class="card bg-light">
+						<div class="card-text text-dark">
+						Estimad@s, <br>
+						<br>
+						Bienvenidos al Programa de Promoción por Profesionalización del Personal de Enfermería, de Trabajo Social y de Terapia Física y Rehabilitación 2021. <br>
+						<br>
+						Para poder obtener el Usuario y Contraseña correspondiente a este periodo, te invitamos a realizar el siguiente registro y enviar solicitud.<br>
+						<br>
+						Recibirán la información vía correo electrónico, favor asegura que los datos proporcionados sean correctos.<br>
+						<br>
+						Atentamente,<br>
+						DGRHO<br>
+
+						</div>
+				</div>
+				</div>
 				 		<div class="form-row">
 							<input type="text" class="form-control" id="botonAccion" name="botonAccion" value="<?php if(isset($_POST["botonAccion"])){ echo $_POST["botonAccion"];} ?>" style="display:none">
 						</div> 
@@ -420,7 +436,7 @@
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="dom_t" >*Domicilio de la unidad: </label>
+								<label class="plantilla-label estilo-colorg" for="dom_t" >*Domicilio para recibir correspondencia: (Titular de la Unidad)</label>
 								<input type="text"  type="text" class="form-control domUR border border-dark" id="dom_titular" name="dom_titular" placeholder="Domicilio" value="<?php if(isset($_POST["dom_titular"])){ echo $_POST["dom_titular"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
@@ -523,7 +539,7 @@
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
-								<label class="plantilla-label estilo-colorg" for="dom_t" >*Domicilio de la Unidad: (Jefatura del Programa)</label>
+								<label class="plantilla-label estilo-colorg" for="dom_t" >*Domicilio para recibir correspondencia: (Jefatura del Programa)</label>
 								<input type="text"  type="text" class="form-control domUR border border-dark" id="dom_titular_j" name="dom_titular_j" placeholder="Domicilio" value="<?php if(isset($_POST["dom_titular_j"])){ echo $_POST["dom_titular_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
@@ -733,7 +749,7 @@
 					</tbody>
 				</table>
 				<input type="button" name="previous" class="previous btn btn-default" value="Previo" />
-  				<input type="submit" name="submit" class="submit btn btn-secondary color_botonEnv" value="Enviar" id="submit_data" />
+  				<input type="submit" name="submit" class="submit btn btn-secondary color_botonEnv" value="Enviar Solicitud" id="submit_data" />
 		</fieldset>
 					
 				<div class="col-md-8 col-md-offset-8">
