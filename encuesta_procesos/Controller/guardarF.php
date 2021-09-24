@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <?php
-include "configuracion.php";
+include "Conexion.php";
 									$concatenarNombDoc = $_POST['guardarDoc'];
 									$leerMov = $_POST['id_env'];
 									
@@ -46,29 +46,13 @@ include "configuracion.php";
 
 
                                     // $bandera = 0;
-// if($bandera == 1){
-				// 	echo '<script type="text/javascript"> alert("No puede ser registrado este movimiento, ya que existe un último movimiento de esta persona en bandeja de rechazo, Se sugiere editar el rechazo."); </script>';
-				// }else
-                                    // // ***********************************buscamos todos los datos por si existe un mov similar 
-                                    //                 $datosDobles = "SELECT id_estructura, color_estado FROM registro WHERE ur = '$unidad' AND correo_t = '$elCorreo_t' AND apellido1_t = '$elApellido1' AND apellido2_t = '$elApellido2_j' AND nombre_t = '$elNombre_j' AND tel_t = '$elNum_t' AND ext_t = '$laExt_t'  ORDER BY id_encuesta DESC";
-                                    //                 if($resRechazo = mysqli_query($conexion, $datosDobles)){
-                                    //                     $rechazoActual = mysqli_fetch_row($resRechazo);
-                                    //                     if($rechazoActual[1] == "negro"){
-                                    //                         $bandera = 1;
-                                    //                     }
-                                    //                 }	
-
                                     //----------------Sacamos la Hora 
-				$hoy = "select CURDATE()";
-				$tiempo ="select curTime()";
-
-				 if ($resultHoy = mysqli_query($conexion,$hoy) AND $resultTime = mysqli_query($conexion,$tiempo)) {
-						 $fechaArray = mysqli_fetch_row($resultHoy);
-						 $horaArray = mysqli_fetch_row($resultTime);
+				$hoy = "SELECT CONVERT(VARCHAR(10),getdate(),23)";
+				 if ($resultHoy = sqlsrv_query($conn,$hoy)) { 
+						 $fechaArray =  sqlsrv_fetch_array($resultHoy, SQLSRV_FETCH_NUMERIC);
 				 }
-				$h_id = str_replace ( ":", '',$horaArray[0] ); 
-				$f_id = str_replace ( "-", '',$fechaArray[0] ); 
-									
+				// $h_id = str_replace ( ":", '',$horaArray[0] ); 
+				$f_id = str_replace ( "-", '',$fechaArray[0] ); 				
                                    	// if ($leerMov == "x") { //$res1Check<1
                                    		$newsql = "INSERT INTO registro(
 											   					ur,
@@ -115,57 +99,97 @@ include "configuracion.php";
 																fechaEnvioUsuario,
 																motivo_rechazo
 																) VALUES (
-																	'$unidad',			
-																	'$domUr',
-																	'$rfc_tur',
-																	'$elNombre',
-																	'$elApellido1',
-																	'$elApellido2',
-																	'$elPuesto',
-																	'$elDom_t',
-																	'$elCorreo_t',
-																	'$elCorreo_tA',
-																	'$elNum_t',
-																	'$laExt_t',
-																	'$rfc_t',
-																	'$elNombre_j',
-																	'$elApellido1_j',
-																	'$elApellido2_j',
-																	'$elPuesto_j',
-																	'$elDom_j',
-																	'$elCorreo_j',
-																	'$elCorreo_jA',
-																	'$elNum_j',
-																	'$laExt_j',
-																	'$elCel_j',
-																	'$rfc_ep',
-																	'$elNombre_ep',
-																	'$elApellido1_ep',
-																	'$elApellido2_ep',
-																	'$elPuesto_ep',
-																	'$elCorreo_ep',
-																	'$elCorreo_epA',
-																	'$elNum_ep',
-																	'$laExt_ep',
-																	'$elCel_ep',
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?,
+																	?
+																)";
+										$params_insert_formu = array(
+																	$unidad,			
+																	$domUr,
+																	$rfc_tur,
+																	$elNombre,
+																	$elApellido1,
+																	$elApellido2,
+																	$elPuesto,
+																	$elDom_t,
+																	$elCorreo_t,
+																	$elCorreo_tA,
+																	$elNum_t,
+																	$laExt_t,
+																	$rfc_t,
+																	$elNombre_j,
+																	$elApellido1_j,
+																	$elApellido2_j,
+																	$elPuesto_j,
+																	$elDom_j,
+																	$elCorreo_j,
+																	$elCorreo_jA,
+																	$elNum_j,
+																	$laExt_j,
+																	$elCel_j,
+																	$rfc_ep,
+																	$elNombre_ep,
+																	$elApellido1_ep,
+																	$elApellido2_ep,
+																	$elPuesto_ep,
+																	$elCorreo_ep,
+																	$elCorreo_epA,
+																	$elNum_ep,
+																	$laExt_ep,
+																	$elCel_ep,
 																	'',
 																	'',
 																	'',
-																	'$fechaArray[0]',
-																	'$f_id$h_id',
+																	$fechaArray[0],
+																	$f_id,
 																	'verde',
 																	'',
 																	'',
 																	'',
 																	''
-																)";
-
-                                   		if($datasub = mysqli_query($conexion,$newsql)){
-                                   		// 	if($datasub2 = mysqli_query($conexion,$datosDobles)){
-		                                //    		$extid =mysqli_fetch_row($datasub2);
-										//     	$res1Check = mysqli_num_rows($datasub2);
-		                                //    		$banderaid = $extid[0];
-		                                //    	}	
+																	);
+                                   		if($datasub = sqlsrv_query($conn, $newsql, $params_insert_formu)){
+                                   		
 			?>
 
 										<div class="alert alert-success">

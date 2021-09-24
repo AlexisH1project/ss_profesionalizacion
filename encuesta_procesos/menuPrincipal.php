@@ -58,12 +58,11 @@
 	</head>
 	<body>
 		<?php 
-		include "configuracion.php";
+		include "Controller/Conexion.php";
 		$usuarioSeguir = $_GET['usuario_rol'];
-
-			$sqlNombre = "SELECT nombrePersonal, id_rol FROM usuarios WHERE usuario = '$usuarioSeguir'";
-			$result = mysqli_query($conexion,$sqlNombre);
-			$nombreU = mysqli_fetch_row($result);
+			$sqlNombre = "SELECT nombrePersonal, id_rol FROM usuarios WHERE usuario = ?";
+			$result = sqlsrv_query($conn,$sqlNombre, array($usuarioSeguir));
+			$nombreU = sqlsrv_fetch_array($result, SQLSRV_FETCH_NUMERIC);
 			echo "<br><br><br><br>"; 
 			if($nombreU[1] == 2){ 
 
@@ -259,7 +258,7 @@
 	        	<br>
 	        	<center>
 	        	<li class=" estilo-color">
-	            <a ><img src="./img/iclogin.png" alt="x" height="17" width="17"/><?php echo (" $nombreU[0]"); ?></span></a>
+	            <a ><img src="./img/iclogin.png" alt="x" height="17" width="17"/><?php echo  utf8_encode($nombreU[0]); ?></span></a>
 	          </li>
 	      </center>
 	          <li class=" estilo-color">

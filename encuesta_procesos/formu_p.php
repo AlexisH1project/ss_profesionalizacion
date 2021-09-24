@@ -97,74 +97,6 @@
 			}
 			});
 
-			function enviarDatos(){
-				// var formulario = document.captura1;
-				// formulario.action= './Controller/agregarNewRegistro.php';
-				// document.getElementById("botonAccion").value = "Aceptar";
-
-					// var $listDocs = $("#listaDoc").val();
-					// $('#nameArchivo').removeAttr("required");
-
-					alert("SIIIIIII");
-					// var tamDocs = $listDocs.length;
-					// var $guardarD = $("#guardarDoc").val();
-					// let ArrayDocs = ["INE","AUR","FMP"];
-				
-					// var = $("#documentoSelct").val();
-					// var = $("#guardarDoc").val();
-					// var = $("#id_env").val();
-					
-
-					// var = $("#unexp_1").val();
-					// var = $("#domUR").val();
-					// var = $("#listaDoc").val();
-					// var = $("#apellido1").val();
-					// var = $("#apellido2").val();
-					// var = $("#nombre").val();
-					// var = $("#puesto").val();
-					// var = $("#dom_titular").val();
-					// var = $("#correo").val();
-					// var = $("#num_t").val();
-					// var = $("#ext").val();
-					
-					// var = $("#dom_titular_j").val();
-					// var = $("#apellido1_j").val();
-					// var = $("#apellido2_j").val();
-					// var = $("#nombre_j").val();
-					// var = $("#puesto_j").val();
-					// var = $("#correo_j").val();
-					// var = $("#num_j").val();
-					// var = $("#ext_j").val();
-					
-					// var = $("#apellido1_ep").val();
-					// var = $("#apellido2_ep").val();
-					// var = $("#nombre_ep").val();
-					// var = $("#correo_ep").val();
-					// var = $("#num_ep").val();
-					// var = $("#ext_ep").val();
-
-				    //  if (b !== '') {
-					//       var tamRFC = b.length;
-					//  	if (tamRFC<13){
-					//     	alert("RFC no valido");
-					//     }
-					//  }
-					//  if (c !== '') {
-					//       var tamCURP = c.length;
-					//  	if (tamCURP<18){
-					//     	alert("CURP no valido");
-					//     }
-
-					//  }
-				    //  var tamCURP = c.length;
-
-				    //   if (a=="" || tamRFC<13 || tamCURP<18 || d==""|| e==""|| f==""|| g==""|| $('input:radio[name=TipoEntregaArchivo]:checked').val() =="Ninguno" || i=="" ) {
-				    //     alert("Falta completar campo");		
-				    //     return false;
-				    //   } else 
-				    //   	formulario.submit();
-		 }
-				
 		$(document).on('click', 'input[type="button"]', function(event) {
 			let id = this.id;
 			const rutaDoc = document.getElementById('nameFile'+id).value;
@@ -208,20 +140,26 @@
 							if (response != 0) {
 								$(".card-img-top").attr("src", response);
 									$("#resultado").html(response);
+									var resultadoDoc = response;
 									var rescatarDocs = $('#guardarDoc').val();
 									rescatarDocs = rescatarDocs + '_' + response;
 									document.getElementById("guardarDoc").value = rescatarDocs;
-			// *****************Borramos la imagen X
-									var image_x = document.getElementById('image_'+id);
-									console.log('image_'+id);
-									image_x.parentNode.removeChild(image_x);
-			// *****************hacemos que aparesca el check
-									var img = document.createElement("img");
-									img.src = "img/paloma.png";
-									var src = document.getElementById("checkImg_"+id);
-									img.height = 20;
-									img.width = 17;
-									src.appendChild(img);
+									if(resultadoDoc == "X"){
+										alert('Existe un error al guardar el archivo');
+									}else{
+				// *****************Borramos la imagen X
+										var image_x = document.getElementById('image_'+id);
+										console.log('image_'+id);
+										image_x.parentNode.removeChild(image_x);
+				// *****************hacemos que aparesca el check
+										var img = document.createElement("img");
+										img.src = "img/paloma.png";
+										var src = document.getElementById("checkImg_"+id);
+										img.height = 20;
+										img.width = 17;
+										src.appendChild(img);
+										alert("Documento guardado correctamente");
+									}
 									// window.location.href = window.location.href + "?listaDocsChek=" + response;
 							} else {
 								alert('ERROR AL CARGAR DOCUMENTO');
@@ -264,21 +202,7 @@
 	<body style="body" onload="nobackbutton();">
     	
 		<?php 
-			include "Controller/configuracion.php";
-
-			$valor = "";
-			$hoy = "select CURDATE()";
-			$tiempo ="select curTime()";
-			$diaActual = "";
-
-			 if ($resultHoy = mysqli_query($conexion,$hoy) AND $resultTime = mysqli_query($conexion,$tiempo)) {
-			 		$rowF = mysqli_fetch_row($resultHoy);  // cambiamos formato de hora 
-			 		$fechaSistema = date("d-m-Y", strtotime($rowF[0])); //"05-04-2020";;
-			 		$rowHora = mysqli_fetch_row($resultTime);
-
-					$diaActual=date("w", strtotime($fechaSistema));
-					
-			 }
+			include "Controller/Conexion.php";
 ?>
 		
 
@@ -345,18 +269,18 @@
 										<div class="md-form mt-0">
 										<label class="plantilla-label estilo-colorg" for="unexp_1">*Unidad:</label>
 										<select class="form-control border border-dark mdb-select md-form" name="unidadSelct">
-															<?php
-															if (!$conexion->set_charset("utf8")) {//asignamos la codificación comprobando que no falle
-																die("Error cargando el conjunto de caracteres utf8");
-															}
-
-															$consulta = "SELECT * FROM ct_unidades";
-															$resultado = mysqli_query($conexion , $consulta);
-															$contador=0;
-
-															while($listUr = mysqli_fetch_assoc($resultado)){ $contador++;?>
-															<option value="<?php echo $listUr["descripcion"]; ?>"><?php echo $listUr["descripcion"]; ?></option>
-															<?php }?>          
+											<?php
+												$consulta = "SELECT descripcion FROM ct_unidades";
+												$contador=0;
+												$res_UR = sqlsrv_query($conn,$consulta);
+												while ($row=sqlsrv_fetch_array($res_UR))
+												{
+														$contador++;
+											?>
+												<option value="<?php echo $row['descripcion']; ?>"><?php echo utf8_encode($row['descripcion']); ?></option>
+											<?php 
+												}
+											?>          
 										</select>
 										<!-- <input onkeypress="return pulsar(event)" type="text" class="form-control unexp border border-dark" id="unexp_1" name="unexp_1" placeholder="Ej. 513" value="<?php if(isset($_POST["unexp_1"])){ echo $_POST["unexp_1"];} ?>" onkeyup="javascript:this.value=this.value.toUpperCase();" required> -->
 										</div>
@@ -594,21 +518,17 @@
 					<div class="form-row">
 						<div class="col">
 								<?php
-								if (!$conexion->set_charset("utf8")) {//asignamos la codificación comprobando que no falle
-										die("Error cargando el conjunto de caracteres utf8");
-								}
-
-								$consulta = "SELECT * FROM ct_documentos";
-								$resultado = mysqli_query($conexion , $consulta);
+								$consulta = "SELECT nombre_documento FROM ct_documentos";
+								$resultado = sqlsrv_query($conn, $consulta);
 								$contador=0;
 								$documentoN = "doc";
-								while($listDoc = mysqli_fetch_assoc($resultado)){ 
+								while($listDoc= sqlsrv_fetch_array($resultado)) {
 									$contador++;
 									$documentoN = $documentoN . $contador;
 								?>
 									<tr>
 										<td >
-										<?php echo $listDoc["nombre_documento"]; ?>
+										<?php echo utf8_encode($listDoc["nombre_documento"]); ?>
 											<div class="col">
 													<input type="text" class="form-control border border-dark" style = "display:none" id="validarDoc" name="validarDoc" value="<?php if(isset($_POST["validarDoc"])){ echo $_POST["validarDoc"];}else{ echo "HOLA"; } ?>" >
 													<p>

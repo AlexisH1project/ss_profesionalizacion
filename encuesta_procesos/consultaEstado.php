@@ -140,6 +140,9 @@
 			input {
 			text-transform: none;
 			}
+			.divisor {
+			border-top:3pt solid black;
+			}
 		  </style>
 
 
@@ -203,17 +206,24 @@
 			
 			});
 
-			function enviarRutaDoc(nombre){
-				var ruta = nombre;
-				let extencion = ruta.split('.');
-				ext =  extencion[2];
-				if(ext == "PDF" || ext == "pdf"){
-					$('#modalPDF').modal('show');
-					$('#idframePDF').attr('src',nombre);
-				}else{
-					$('#modalPDF').modal('hide');
-					verDoc(nombre,ext);
-				}
+			function enviarRutaDoc(nombre, carpeta){
+				// var ruta = nombre;
+				// let extencion = ruta.split('.');
+				// // ext =  extencion[2];
+				// ext =  "pdf";
+				// nombre	= '\\513EBMJ01VEPA\Docs_pzcion\INE\GAPE710401HGR_AUR_.pdf';
+
+				// if(ext == "PDF" || ext == "pdf"){
+				// 	$('#modalPDF').modal('show');
+				// 	$('#idframePDF').attr('src',nombre);
+				// }else{
+				// 	$('#modalPDF').modal('hide');
+				// 	verDoc(nombre,ext);
+				// }
+				
+				laExtencion = "pdf";
+				window.open('./Controller/controllerDescarga.php?nombreDecarga='+nombre+'&extencion='+laExtencion+'&subCarpeta='+carpeta);
+
 			
 			}
 
@@ -247,12 +257,12 @@
 		<br>
 	<body onload="nobackbutton();">
 			<?php
-				include "configuracion.php";
+				include "Controller/Conexion.php";
 				$usuarioSeguir =  $_GET['usuario_rol'];
-				$dir_subidaMov = './Controller/documentos/';
-				$consulta = "SELECT * FROM usuarios WHERE usuario = '$usuarioSeguir'";
-				if($resultadoSelect = mysqli_query($conexion, $consulta)){
-					$rowUser = mysqli_fetch_assoc($resultadoSelect);
+				// $dir_subidaMov = './Controller/documentos/';
+				$consulta = "SELECT id_rol FROM usuarios WHERE usuario = ?";
+				if($resultadoSelect = sqlsrv_query($conn, $consulta, array($usuarioSeguir))){
+					$rowUser = sqlsrv_fetch_array($resultadoSelect);
 					
 					if($rowUser['id_rol'] == 6){
 
@@ -340,18 +350,23 @@
 									<div class="form-group col-md-12">
 											<select class="form-control border-dark" name="unidadBus">
 												<?php
-												if (!$conexion->set_charset("utf8")) {//asignamos la codificación comprobando que no falle
-													die("Error cargando el conjunto de caracteres utf8");
+												include "Controller/Conexion.php";
+
+												$consulta = "SELECT descripcion FROM ct_unidades";
+												$registrosCur = sqlsrv_query($conn, $consulta);
+												if( $registrosCur === false ){
+													echo "Error al ejecutar consulta.</br>";
+												}  else {
+													$contador=0;
+														while($resUr= sqlsrv_fetch_array($registrosCur)) {
+															$contador++;
+												?>
+													<option value="<?php echo $resUr['descripcion']; ?>"><?php echo utf8_encode($resUr['descripcion']); ?></option>
+												<?php 
+													}
 												}
-
-												$consulta = "SELECT * FROM ct_unidades";
-												$resultado = mysqli_query($conexion , $consulta);
-												$contador=0;
-
-												while($misdatos = mysqli_fetch_assoc($resultado)){ $contador++;?>
-												<option  data-subtext="<?php echo $misdatos["descripcion"]; ?>"><?php echo $misdatos["descripcion"]; ?></option>
-												<?php }?>          
-												</select>
+												?>          	          
+											</select>
 									</div>
 									</div>
 							</div>
@@ -397,6 +412,7 @@
 							
 							<th scope="titulo" style="display: none;" class="sticky"></th>
 							<th scope="titulo"  style="text-align: center" class="sticky">*</th>
+							<th scope="titulo"  style="text-align: center" class="sticky">Tipo</th>
 							<th scope="titulo"  style="text-align: center" class="sticky">Unidad</th>
 							  <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">RFC </th>
 							  <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">Nombre </th>
@@ -416,16 +432,20 @@
 						</thead>
 				 <tbody>
 				 <?php
-			$sql = "SELECT * FROM registro WHERE color_estado = 'verde'";
-			
+			include "Controller/Conexion.php";
+
+			$sql = "SELECT * FROM registro WHERE color_estado = ?";
 			$idMatriz = 0;
 			$cont_tabla1 = 0;
 			$imprimirNoExiste = 0;
-			if ($result = mysqli_query($conexion,$sql)) {
-				 while($ver = mysqli_fetch_row($result)){
+			if ($result = sqlsrv_query($conn, $sql, array('verde'))) {
+				 while($ver = sqlsrv_fetch_array($result, SQLSRV_FETCH_NUMERIC)){
 							$nombreAdescargar = $ver[13]."_";
 						 ?>
-					<tr>
+					<tr class="divisor">
+						<td rowspan="4">
+							<h4><?php echo "#".$idMatriz ?></h4>
+				 		</td>
 						<td>
 							<h4>UNIDAD</h4>
 						</td>
@@ -469,13 +489,13 @@
 							<td><?php echo $ver[21]." Ext. ".$ver[22]?></td>
 							<td><?php echo $ver[23] ?></td>
 							<td>
-								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'INE/'.$nombreAdescargar.'INE_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> INE</button>
+								<button  onclick="enviarRutaDoc('<?php echo $nombreAdescargar.'INE_.pdf'; ?>', 'INE' )"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> INE</button>
 							</td>						
 							<td>
-								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'FMP/'.$nombreAdescargar.'FMP_.pdf';?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> FMP</button>
+								<button  onclick="enviarRutaDoc('<?php echo $nombreAdescargar.'FMP_.pdf';?>', 'FMP')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> FMP</button>
 							</td>
 							<td>
-								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'AUR/'.$nombreAdescargar.'AUR_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
+								<button  onclick="enviarRutaDoc('<?php echo $nombreAdescargar.'AUR_.pdf'; ?>', 'AUR')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
 							</td>
 							<td>
 								<button type="button" name="aceptarUser" id="aceptarUser" class="btn btn-secondary color_boton" onclick="escribirIdReg(<?php echo $ver[0]; ?>)" data-toggle="modal" data-target="#aceptarUserModal" >Aceptar</button>
@@ -499,12 +519,6 @@
 							<td><?php echo $ver[30] ?></td>
 							<td><?php echo $ver[31]." Ext. ".$ver[32]?></td>
 					</tr>
-					<tr>
-						<td>
-				 		</td>
-					</tr>
-							
-							
 						<?php 
 							//$matriz = array($idMatriz => $ver[0] );
 							$matriz[$idMatriz]= $ver[0];							
@@ -534,7 +548,7 @@
 							$nombreBuscar = $_POST['nombreBus'];
 							$apellidoBuscar = $_POST['apellidoBus'];
 							$apellidomBuscar = $_POST['apellidoMb'];
-							$unidadCompleta = $_POST['unidadBus'];
+							$unidadCompleta = utf8_encode($_POST['unidadBus']);
 							$arrayUnidad = explode(" ", $unidadCompleta);
 							if(count($arrayUnidad) > 1){
 								$unidadBuscar = $arrayUnidad[0];
@@ -548,7 +562,7 @@
 
  							if($unidadBuscar != ""){
 
-								$sql = "SELECT * FROM registro WHERE ur = '$unidadCompleta'";
+								$sql = "SELECT * FROM registro WHERE ur = ?";
  							
  							}
 ?>
@@ -587,23 +601,10 @@
 
 							$idMatriz = 0;
 							$imprimirNoExiste = 0;
-							if ($result = mysqli_query($conexion,$sql)) {
-
-								$totalFilas    =    mysqli_num_rows($result);  
-								if($totalFilas == 0){
-										$imprimirNoExiste ++;
-										$matriz[0][0] = 0;
-										echo('
-															<br>
-															<br>
-															<div class="col-sm-12 ">
-															<div class="plantilla-inputv text-dark">
-															    <div class="card-body"><h2 align="center">No existe resultados de la busqueda, vuelve intentar.</h2></div>
-														</div>
-														</div>');
-									//	$matrizEventuales = queryEventual($sql2,$imprimirNoExiste);
-								}else{
-						while($ver = mysqli_fetch_row($result)){
+							$params_busqueda = array($unidadCompleta);
+							if ($result = sqlsrv_query($conn,$sql,$params_busqueda)) {
+								
+						while($ver = sqlsrv_fetch_array($result, SQLSRV_FETCH_NUMERIC)){
 							$nombreAdescargar = $ver[13]."_";
 						 ?>
 
@@ -615,19 +616,19 @@
 							<td><?php echo $ver[20] ?></td>
 							<td><?php echo $ver[21]." Ext. ".$ver[22]?></td>
 							<td>
-								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'INE/'.$nombreAdescargar.'INE_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> INE</button>
+								<button  onclick="enviarRutaDoc('<?php echo $nombreAdescargar.'INE_.pdf'; ?>', 'INE')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> INE</button>
 							</td>						
 							<td>
-								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'FMP/'.$nombreAdescargar.'FMP_.pdf';?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> FMP</button>
+								<button  onclick="enviarRutaDoc('<?php echo $nombreAdescargar.'FMP_.pdf';?>', 'FMP')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> FMP</button>
 							</td>
 							<td>
-								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'AUR/'.$nombreAdescargar.'AUR_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
+								<button  onclick="enviarRutaDoc('<?php echo $nombreAdescargar.'AUR_.pdf'; ?>', 'AUR')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
+							</td>
+							<td>
+								<button type="button" name="aceptarUser" id="aceptarUser" class="btn btn-secondary color_boton" onclick="escribirIdReg(<?php echo $ver[0]; ?>)" data-toggle="modal" data-target="#aceptarUserModal" >Aceptar</button>
 							</td>
 							<td>
 								<button type="button" name="rechazoInicial" id="rechazoInicial" class="btn btn-danger" data-toggle="modal" data-target="#RechInicial" >Rechazar</button>
-							</td>
-							<td>
-								<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'AUR/'.$nombreAdescargar.'AUR_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
 							</td>
 						</tr>
 						<?php 
@@ -635,11 +636,9 @@
 							$matriz[$idMatriz]= $ver[0];							
 							$idMatriz++;
 						}
-							}
 						
 						}else{
 							echo '<script type="text/javascript">alert("Error en la conexion");</script>';
-							echo '<script type="text/javascript">alert("error '. mysqli_error($conexion).'");</script>';
 						}
 						?>
 						<td>
@@ -777,12 +776,12 @@
 				</thead>
 		 <tbody>
 		<?php
-	$sql = "SELECT * FROM registro WHERE color_estado = 'negro'";
-	
+	$sql = "SELECT * FROM registro WHERE color_estado = ?";
+
 	$idMatriz = 0;
 	$imprimirNoExiste = 0;
-	if ($result = mysqli_query($conexion,$sql)) {
-		 while($ver = mysqli_fetch_row($result)){
+	if ($result = sqlsrv_query($conn,$sql, array('negro'))) {
+		 while($ver = sqlsrv_fetch_array($result, SQLSRV_FETCH_NUMERIC)){
 					$nombreAdescargar = $ver[13]."_";
 				 ?>
 
@@ -794,13 +793,13 @@
 					<td><?php echo $ver[20] ?></td>
 					<td><?php echo $ver[21]." Ext. ".$ver[22]?></td>
 					<td>
-						<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'INE/'.$nombreAdescargar.'INE_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> INE</button>
+						<button  onclick="enviarRutaDoc('<?php $nombreAdescargar.'INE_.pdf'; ?>', 'INE')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> INE</button>
 					</td>						
 					<td>
-						<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'FMP/'.$nombreAdescargar.'FMP_.pdf';?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> FMP</button>
+						<button  onclick="enviarRutaDoc('<?php $nombreAdescargar.'FMP_.pdf';?>', 'FMP')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> FMP</button>
 					</td>
 					<td>
-						<button  onclick="enviarRutaDoc('<?php echo $dir_subidaMov.'AUR/'.$nombreAdescargar.'AUR_.pdf'; ?>')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
+						<button  onclick="enviarRutaDoc('<?php $nombreAdescargar.'AUR_.pdf'; ?>', 'AUR')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
 					</td>
 					<td>
 						<button type="button" name="aceptarUser" id="aceptarUser" class="btn btn-secondary color_boton" onclick="escribirIdReg(<?php echo $ver[0]; ?>)" data-toggle="modal" data-target="#aceptarUserModal" >Aceptar</button>
@@ -818,7 +817,6 @@
 				
 				}else{
 					echo '<script type="text/javascript">alert("Error en la conexion");</script>';
-					echo '<script type="text/javascript">alert("error '. mysqli_error($conexion).'");</script>';
 				}
 				?>
 				<td>

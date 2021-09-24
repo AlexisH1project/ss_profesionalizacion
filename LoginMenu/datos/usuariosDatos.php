@@ -1,49 +1,42 @@
 <?php
 
 include "../entidades/usuarios.php";
-include "conexion.php";
-
 class usuariosDatos{
 	function insertarUsuarios($usuario,$pass){
-		$cnn = new conexion();
-		$con = $cnn->conectar();
-		
+		include "../../encuesta_procesos/Controller/Conexion.php";
 		$usuarios = new usuarios();
 		$usuarios->usuario=$usuario;
 		$usuarios->contrasena = $pass;
-		mysqli_select_db($con,"bd_profss");
-		$sql = "INSERT INTO usuarios (usuario,contrasena) VALUES(
-		'".$usuarios->usuario."',
-		'".$usuarios->contrasena."'
-		)";
-		if(mysqli_query($con,$sql)){
+		// mysqli_select_db($con,"bd_profss");
+		$sql = "INSERT INTO usuarios (usuario,contrasena) VALUES(?,?)";
+		
+		if(sqlsrv_query($conn, $sql, array($usuarios->usuario,$usuarios->contrasena))){
 			return true;
 		}else{
 			return false;
 		}
-		mysqli_close($con);
+		// mysqli_close($con);
 	}
 	
     function validar($usuario,$pass){
-        $cnn = new conexion();
-		$con = $cnn->conectar();
-		
+		include "../../encuesta_procesos/Controller/Conexion.php";
+
 		$usuarios = new usuarios();
 		$usuarios->usuario=$usuario;
 		$usuarios->contrasena = $pass;
+		$sql = "SELECT * FROM usuarios WHERE usuario= ? and contrasena= ?";
         
-		mysqli_select_db($con,"bd_profss");
-        
-		$sql = "SELECT * FROM usuarios WHERE usuario='".$usuarios->usuario."' and contrasena='".$usuarios->contrasena."'";
-        $consulta = mysqli_query($con,$sql);
-        $fila = mysqli_fetch_array($consulta);
-        if($fila>0){
-            if($fila["usuario"] == $usuarios->usuario && $fila["contrasena"]==$usuarios->contrasena){
+     	$consulta = sqlsrv_query($conn,$sql,array($usuarios->usuario,$usuarios->contrasena));
+      if($fila = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_ASSOC)){
+		 if($fila['usuario'] == $usuarios->usuario && $fila['contrasena']==$usuarios->contrasena){
                 return true;
-            }
-        }else{
-            return false;
-        }
-    }
+            }else{
+	            return false;
+			}
+	    }else{
+			return false;
+
+		}
+	}
 }
 ?>
