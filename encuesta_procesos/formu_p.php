@@ -67,34 +67,144 @@
 		  </style>
 
 		<script type="text/javascript">
-
-
+			function validateEmail(email) {
+				const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				return re.test(email);
+			}
 			$(document).ready(function(){
 			var current = 1,current_step,next_step,steps;
-			steps = $("fieldset").length;
-			$(".next").click(function(){
-				current_step = $(this).parent();
-				next_step = $(this).parent().next();
-				next_step.show();
-				current_step.hide();
-				setProgressBar(++current);
+				steps = $("fieldset").length;
+		// **********************************************************************datos de la unidad 
+				$(".next1").click(function(){
+					var $domici = $('#domUR').val();
+					if ($domici === "") {
+					//    event.preventDefault();
+						var error = '<br><span style="color: red;">Error. Vacio.</span>';
+						$('#domUR').after($(error).fadeOut(2000));
+						$('#domUR').css( "border-color","red");
+						// alert("yaaaa");
+					}else{
+						current_step = $(this).parent();
+						next_step = $(this).parent().next();
+						next_step.show();
+						current_step.hide();
+						setProgressBar(++current);
+					}
+				});
+		// **********************************************************************datos del titular
+				$(".next2").click(function(){
+					var $rfc_t = $('#rfc_u').val();
+					var $ap1_t = $('#apellido1').val();
+					var $ap2_t = $('#apellido2').val();
+					var $nombre_t = $('#nombre').val();
+					var $puesto_t = $('#puesto').val();
+					var $dom_t = $('#dom_titular').val();
+					var $correo1_t = $('#correo').val();
+					var $correo2_t = $('#correoA').val();
+					let $num_t = parseInt($('#num_t').val());
+					let $ext_t = parseInt($('#ext').val());
+				if(validateEmail($correo1_t) && validateEmail($correo2_t)){
+					if(Number.isInteger($num_t) && Number.isInteger($ext_t)){
+
+						if ($rfc_t  === "" || $ap1_t  === "" || $ap2_t  === "" || $nombre_t  === "" || $puesto_t  === "" || $dom_t  === "" || $correo1_t  === "" || $correo2_t  === "" || $num_t  === "" || $ext_t  === "") {
+						//    event.preventDefault();
+							var error = '<br><span style="color: red;">Error. Vacio.</span>';
+							$('#num_t').after($(error).fadeOut(2000));
+							$('#num_t').css( "border-color","red");
+							// alert("yaaaa");
+						}else{
+							current_step = $(this).parent();
+							next_step = $(this).parent().next();
+							next_step.show();
+							current_step.hide();
+							setProgressBar(++current);
+						}
+					}else{
+						var error = '<br><span style="color: red;">Solo se reciben números en el apartado de telefoneo, extensión o celular</span>';
+						$('#num_t').after($(error).fadeOut(2000));
+						$('#num_t').css( "border-color","red");
+					}
+				}else{
+						var error = '<br><span style="color: red;">Verificar los correos</span>';
+						$('#num_t').after($(error).fadeOut(2000));
+						$('#num_t').css( "border-color","red");
+				}
+				});
+		// **********************************************************************jefatura del programa
+
+				$(".next3").click(function(){
+					var $rfc_j = $('#rfc_t').val();
+					var $ap1_j = $('#apellido1_j').val();
+					var $ap2_j = $('#apellido2_j').val();
+					var $nombre_j = $('#nombre_j').val();
+					var $puesto_j = $('#puesto_j').val();
+					var $domi_j = $('#dom_titular_j').val();
+					var $correo1_j = $('#correo_j').val();
+					var $correo2_j = $('#correoA_j').val();
+					let $num_j = parseInt($('#num_j').val());
+					let $ext_j = parseInt($('#ext_j').val());
+					var rescatarDocs = $('#guardarDoc').val();
+					arrayDocs = rescatarDocs.split("_");
+					var bandera1=0,bandera2=0,bandera3 = 0;
+				if(validateEmail($correo1_j) && validateEmail($correo2_j)){
+					if(Number.isInteger($num_j) && Number.isInteger($ext_j)){
+						for(var i =0; i< arrayDocs.length; i++){
+							if(arrayDocs[i] == "doc1" ){
+								bandera1=1;
+							}
+							if(arrayDocs[i] == "doc12" ){
+								bandera2 =1;
+							}
+							if(arrayDocs[i] == "doc123" ){
+								bandera3=1;
+							}
+						}
+					if(bandera1 == 1 && bandera2==1 && bandera3 == 1){
+						if ($rfc_j  === "" || $domi_j  === "" || $ap1_j  === "" || $ap2_j  === "" || $nombre_j  === "" || $puesto_j  === "" || $correo1_j  === "" || $correo2_j  === "" || $num_j  === "" || $ext_j  === "") {
+						//    event.preventDefault();
+							var error = '<br><span style="color: red;">Error. Vacio.</span>';
+							$('#num_j').after($(error).fadeOut(2000));
+							$('#num_j').css( "border-color","red");
+							// alert("yaaaa");
+						}else{
+							current_step = $(this).parent();
+							next_step = $(this).parent().next();
+							next_step.show();
+							current_step.hide();
+							setProgressBar(++current);
+						}
+					}else{
+						alert("Falta cargar algún documento");	
+					}
+					}else{
+						var error = '<br><span style="color: red;">Solo se reciben números en el apartado de telefoneo, extensión o celular</span>';
+						$('#num_j').after($(error).fadeOut(2000));
+						$('#num_j').css( "border-color","red");
+					}
+				}else{
+						var error = '<br><span style="color: red;">Verificar los correos</span>';
+						$('#num_j').after($(error).fadeOut(2000));
+						$('#num_j').css( "border-color","red");
+				}
 			});
-			$(".previous").click(function(){
-				current_step = $(this).parent();
-				next_step = $(this).parent().prev();
-				next_step.show();
-				current_step.hide();
-				setProgressBar(--current);
-			});
-			setProgressBar(current);
-			// Change progress bar action
-			function setProgressBar(curStep){
-				var percent = parseFloat(100 / steps) * curStep;
-				percent = percent.toFixed();
-				$(".progress-bar")
-					.css("width",percent+"%")
-					.html(percent+"%");		
-			}
+
+				
+				$(".previous").click(function(){
+					current_step = $(this).parent();
+					next_step = $(this).parent().prev();
+					next_step.show();
+					current_step.hide();
+					setProgressBar(--current);
+				});
+				setProgressBar(current);
+				// Change progress bar action
+				function setProgressBar(curStep){
+					var percent = parseFloat(100 / steps) * curStep;
+					percent = percent.toFixed();
+					$(".progress-bar")
+						.css("width",percent+"%")
+						.html(percent+"%");		
+				}
 			});
 
 		$(document).on('click', 'input[type="button"]', function(event) {
@@ -114,8 +224,8 @@
 			var elNom_j= $("#nombre_j").val();
 			var elP_j = $("#puesto_j").val();
 			var elCorreo_j = $("#correo_j").val();
-			var elnum_j= $("#num_j").val();
-			var laExt_j = $("#ext_j").val();
+			let elnum_j= parseInt($("#num_j").val());
+			let laExt_j = parseInt($("#ext_j").val());
 			var formData = new FormData();
 			var files = $('#nameFile'+id)[0].files[0];
 
@@ -146,7 +256,10 @@
 									document.getElementById("guardarDoc").value = rescatarDocs;
 									if(resultadoDoc == "X"){
 										alert('Existe un error al guardar el archivo');
+									}else if(resultadoDoc == "X2"){
+										alert('El documento no es formato PDF, vuelva a intentar');
 									}else{
+
 				// *****************Borramos la imagen X
 										var image_x = document.getElementById('image_'+id);
 										console.log('image_'+id);
@@ -158,7 +271,7 @@
 										img.height = 20;
 										img.width = 17;
 										src.appendChild(img);
-										alert("Documento guardado correctamente");
+										alert('Documento guardado correctamente');
 									}
 									// window.location.href = window.location.href + "?listaDocsChek=" + response;
 							} else {
@@ -169,32 +282,14 @@
 			}else{
 				alert('Archivo no seleccionado');
 			}
-			// return false;
-
-			// var parametros = {
-			// 			"rutaDoc" : rutaDoc,
-			// 			"correoJ" : correoJ,
-			// 			"id" : id
-			// };
-			// $.ajax({
-			// 				url: "./Controller/guardarDoc.php",
-			// 				type: 'post',
-			// 				data: parametros,
-			// 				beforeSend: function () {
-			// 						$("#resultado").html("Procesando, espere por favor...");
-			// 				},
-			// 				success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-			// 						$("#resultado").html(response);
-			// 				}
-							
-			// });
+			
 		});
 
 		function listaDeDoc(listaEnviar){
 			// document.getElementById("listaDoc").value = text;
 			document.getElementById("guardarDoc").value = listaEnviar;
 		}
-	
+
 		</script>
 <script src="js/funciones.js"></script>
 		
@@ -297,8 +392,7 @@
 							</tr>									
 					</tbody>
 					</table>
-					
-					<input type="button" name="next" class="next btn btn-secondary color_boton" value="Siguiente" />
+					<button type="submit" name="next1" id="next1" class="next1 btn btn-secondary color_boton" >SIGUIENTE</button>
 				</fieldset>
 
 <!--*************************************************************** tabla TITULAR  -->
@@ -368,14 +462,14 @@
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo institucional: (Titular de la Unidad)</label>
-								<input type="mail"  class="form-control domUR border border-dark" id="correo" name="correo" placeholder="@" value="<?php if(isset($_POST["correo"])){ echo $_POST["correo"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="email"  class="form-control domUR border border-dark" id="correo" name="correo" placeholder="@" value="<?php if(isset($_POST["correo"])){ echo $_POST["correo"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Titular de la Unidad)</label>
-								<input type="mail"  class="form-control domUR border border-dark" id="correoA" name="correoA" placeholder="@" value="<?php if(isset($_POST["correoA"])){ echo $_POST["correoA"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="email"  class="form-control domUR border border-dark" id="correoA" name="correoA" placeholder="@" value="<?php if(isset($_POST["correoA"])){ echo $_POST["correoA"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
@@ -400,7 +494,8 @@
 					</tbody>
 					</table>
 					<input type="button" name="previous" class="previous btn btn-default" value="Previo" />
-  					<input type="button" name="next" class="next btn btn-secondary color_boton" value="Siguiente" />
+					<button type="submit" name="next2" id="next1" class="next2 btn btn-secondary color_boton" >SIGUIENTE</button>
+  					<!-- <input type="button" name="next" class="next2 btn btn-secondary color_boton" value="Siguiente" /> -->
 			</fieldset>
 		
 <!--*************************************************************** tabla JEFATURA DE PROGRAMA   -->
@@ -471,14 +566,14 @@
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo institucional: (Jefatura del Programa)</label>
-								<input type="mail"  class="form-control domUR border border-dark" id="correo_j" name="correo_j" placeholder="@" value="<?php if(isset($_POST["correo_j"])){ echo $_POST["correo_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="email"  class="form-control domUR border border-dark" id="correo_j" name="correo_j" placeholder="@" value="<?php if(isset($_POST["correo_j"])){ echo $_POST["correo_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Jefatura del Programa)</label>
-								<input type="mail"  class="form-control domUR border border-dark" id="correoA_j" name="correoA_j" placeholder="@" value="<?php if(isset($_POST["correoA_j"])){ echo $_POST["correoA_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="email"  class="form-control domUR border border-dark" id="correoA_j" name="correoA_j" placeholder="@" value="<?php if(isset($_POST["correoA_j"])){ echo $_POST["correoA_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
@@ -566,7 +661,9 @@
 					</table>
 					<!-- Resultado: <span id="resultado">0</span> -->
 						<input type="button" name="previous" class="previous btn btn-default" value="Previo" />
-						<input type="button" name="next" class="next btn btn-secondary color_boton" value="Siguiente" />
+						<!-- <input type="button" name="next3" class="next3 btn btn-secondary color_boton" value="Siguiente" /> -->
+						<button type="submit" name="next3" id="next3" class="next3 btn btn-secondary color_boton" >SIGUIENTE</button>
+
 		</fieldset>
 		
 <!--*************************************************************** tabla encargado del programa  -->
@@ -629,14 +726,14 @@
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo institucional: (Encargado del Programa)</label>
-								<input type="mail"  class="form-control domUR border border-dark" id="correo_ep" name="correo_ep" placeholder="@" value="<?php if(isset($_POST["correo_ep"])){ echo $_POST["correo_ep"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="email"  class="form-control domUR border border-dark" id="correo_ep" name="correo_ep" placeholder="@" value="<?php if(isset($_POST["correo_ep"])){ echo $_POST["correo_ep"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Encargado del Programa)</label>
-								<input type="mail"  class="form-control domUR border border-dark" id="correoA_ep" name="correoA_ep" placeholder="@" value="<?php if(isset($_POST["correoA_ep"])){ echo $_POST["correoA_ep"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="email"  class="form-control domUR border border-dark" id="correoA_ep" name="correoA_ep" placeholder="@" value="<?php if(isset($_POST["correoA_ep"])){ echo $_POST["correoA_ep"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>

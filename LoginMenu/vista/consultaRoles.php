@@ -3,7 +3,7 @@
 
     include "../../encuesta_procesos/Controller/Conexion.php";
    $user =  $_GET["usuario"];
-    // $ROL = $_POST['rol'];
+    $ROL = $_POST['rol'];
     // /*
    
     $consultaRol = " SELECT id_rol FROM usuarios WHERE usuario = ?";
@@ -15,7 +15,7 @@
                 // $alc_mun = utf8_encode($row['alc_mun']);
                 // $estado = utf8_encode($row['estado']);
                 // $colonia = utf8_encode($row['colonia']);  
-                   echo $ROL;
+                //    echo $ROL;
 
              if(($ROL == 0) && ($unidad == '')){
              

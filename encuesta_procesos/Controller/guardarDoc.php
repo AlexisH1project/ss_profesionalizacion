@@ -18,12 +18,18 @@
 			//exit;
         $fichero_subido = $dir_subida . basename($_FILES['file']['name']);
         // $fichero_subidoL = $dir_subidaL . basename($_FILES['file']['name']); //servidor
-
-        $extencion2 = explode(".",$fichero_subido);
-        $tamnio = count($extencion2);
-
-        $extencion3 = $extencion2[$tamnio-1];
-
+        
+        $arrayExtencion = explode(".",basename($_FILES['file']['name']));
+        // $extencion2 = explode(".",$fichero_subido);
+        $tamnio = count($arrayExtencion);
+        $bandera = 0;
+        for($i=0; $i<$tamnio; $i++){
+            if($arrayExtencion[$i]== "PDF" || $arrayExtencion[$i]== "pdf"){
+                $bandera=1;
+                $extencion3 = $arrayExtencion[$i];
+            }
+        }
+    if($bandera == 1){
         if (move_uploaded_file($_FILES['file']['tmp_name'], $fichero_subido)) {
             // sleep(3);
             $concatenarNombreC = $dir_subida.strtoupper($elRfc."_".$idDoc[1]."_.".$extencion3);
@@ -34,7 +40,9 @@
             $resultado = "X";
             // echo $resultado;
         }
-
+    }else{
+        $resultado = "X2";
+    }
         // closedir($dir_subida);
 
         // $dirL =opendir($dir_subidaL); 
