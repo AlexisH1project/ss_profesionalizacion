@@ -188,6 +188,7 @@ include "Conexion.php";
 																	'',
 																	''
 																	);
+										// print_r($params_insert_formu);
                                    		if($datasub = sqlsrv_query($conn, $newsql, $params_insert_formu)){
                                    		
 			?>

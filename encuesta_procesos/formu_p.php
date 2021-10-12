@@ -448,28 +448,28 @@
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="puesto" >*Puesto: (Titular de la Unidad)</label>
-								<input type="text"  type="text" class="form-control domUR border border-dark" id="puesto" name="puesto" placeholder="puesto" value="<?php if(isset($_POST["puesto"])){ echo $_POST["puesto"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="text"  type="text" class="form-control domUR border border-dark" id="puesto" name="puesto" placeholder="puesto" value="<?php if(isset($_POST["puesto"])){ echo $_POST["puesto"];} ?>" maxlength="169" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="dom_t" >*Domicilio para recibir correspondencia: (Titular de la Unidad)</label>
-								<input type="text"  type="text" class="form-control domUR border border-dark" id="dom_titular" name="dom_titular" placeholder="Domicilio" value="<?php if(isset($_POST["dom_titular"])){ echo $_POST["dom_titular"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="text"  type="text" class="form-control domUR border border-dark" id="dom_titular" name="dom_titular" placeholder="Domicilio" value="<?php if(isset($_POST["dom_titular"])){ echo $_POST["dom_titular"];} ?>" maxlength="224" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo institucional: (Titular de la Unidad)</label>
-								<input type="email"  class="form-control domUR border border-dark" id="correo" name="correo" placeholder="@" value="<?php if(isset($_POST["correo"])){ echo $_POST["correo"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="email"  class="form-control domUR border border-dark" id="correo" name="correo" placeholder="@" value="<?php if(isset($_POST["correo"])){ echo $_POST["correo"];} ?>" maxlength="64" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Titular de la Unidad)</label>
-								<input type="email"  class="form-control domUR border border-dark" id="correoA" name="correoA" placeholder="@" value="<?php if(isset($_POST["correoA"])){ echo $_POST["correoA"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="email"  class="form-control domUR border border-dark" id="correoA" name="correoA" placeholder="@" value="<?php if(isset($_POST["correoA"])){ echo $_POST["correoA"];} ?>" maxlength="64" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
@@ -552,28 +552,28 @@
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="puesto" >*Puesto: (Jefatura del Programa)</label>
-								<input type="text"  type="text" class="form-control domUR border border-dark" id="puesto_j" name="puesto_j" placeholder="puesto" value="<?php if(isset($_POST["puesto_j"])){ echo $_POST["puesto_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="text"  type="text" class="form-control domUR border border-dark" id="puesto_j" name="puesto_j" placeholder="puesto" value="<?php if(isset($_POST["puesto_j"])){ echo $_POST["puesto_j"];} ?>"  maxlength="169" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="dom_t" >*Domicilio para recibir correspondencia: (Jefatura del Programa)</label>
-								<input type="text"  type="text" class="form-control domUR border border-dark" id="dom_titular_j" name="dom_titular_j" placeholder="Domicilio" value="<?php if(isset($_POST["dom_titular_j"])){ echo $_POST["dom_titular_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="text"  type="text" class="form-control domUR border border-dark" id="dom_titular_j" name="dom_titular_j" placeholder="Domicilio" value="<?php if(isset($_POST["dom_titular_j"])){ echo $_POST["dom_titular_j"];} ?>" maxlength="224"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo institucional: (Jefatura del Programa)</label>
-								<input type="email"  class="form-control domUR border border-dark" id="correo_j" name="correo_j" placeholder="@" value="<?php if(isset($_POST["correo_j"])){ echo $_POST["correo_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="email"  class="form-control domUR border border-dark" id="correo_j" name="correo_j" placeholder="@" value="<?php if(isset($_POST["correo_j"])){ echo $_POST["correo_j"];} ?>" maxlength="64" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Jefatura del Programa)</label>
-								<input type="email"  class="form-control domUR border border-dark" id="correoA_j" name="correoA_j" placeholder="@" value="<?php if(isset($_POST["correoA_j"])){ echo $_POST["correoA_j"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="email"  class="form-control domUR border border-dark" id="correoA_j" name="correoA_j" placeholder="@" value="<?php if(isset($_POST["correoA_j"])){ echo $_POST["correoA_j"];} ?>" maxlength="64" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
@@ -719,21 +719,21 @@
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="puesto" >*Puesto: (Encargado del Programa)</label>
-								<input type="text"  type="text" class="form-control domUR border border-dark" id="puesto_ep" name="puesto_ep" placeholder="puesto" value="<?php if(isset($_POST["puesto_ep"])){ echo $_POST["puesto_ep"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="text"  type="text" class="form-control domUR border border-dark" id="puesto_ep" name="puesto_ep" placeholder="puesto" value="<?php if(isset($_POST["puesto_ep"])){ echo $_POST["puesto_ep"];} ?>" maxlength="169" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo institucional: (Encargado del Programa)</label>
-								<input type="email"  class="form-control domUR border border-dark" id="correo_ep" name="correo_ep" placeholder="@" value="<?php if(isset($_POST["correo_ep"])){ echo $_POST["correo_ep"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="email"  class="form-control domUR border border-dark" id="correo_ep" name="correo_ep" placeholder="@" value="<?php if(isset($_POST["correo_ep"])){ echo $_POST["correo_ep"];} ?>" maxlength="64" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>
 							<div class="col">
 								<div class="md-form mt-0">
 								<label class="plantilla-label estilo-colorg" for="correo" >*Correo adicional: (Encargado del Programa)</label>
-								<input type="email"  class="form-control domUR border border-dark" id="correoA_ep" name="correoA_ep" placeholder="@" value="<?php if(isset($_POST["correoA_ep"])){ echo $_POST["correoA_ep"];} ?>"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+								<input type="email"  class="form-control domUR border border-dark" id="correoA_ep" name="correoA_ep" placeholder="@" value="<?php if(isset($_POST["correoA_ep"])){ echo $_POST["correoA_ep"];} ?>" maxlength="64" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
 								</div>
 							</div>
 							<br>

@@ -827,6 +827,148 @@
 				</td>
  </tbody>
 </table>
+
+<!-- ************************************tabla de aceptados -->
+<div class="card bg-secondary text-white">
+				<div class="card-body plantilla-inputg"><h2>Aceptados</h2></div>
+</div>
+<div class="table-responsive">
+<table class="table table-striped table-bordered" style="margin-bottom: 0;  font-size:70%;" >
+	
+<thead>
+						    <tr>
+							<!-- <td>Observacion</td>
+							<td>ID Fomope</td> -->
+							
+							<th scope="titulo" style="display: none;" class="sticky"></th>
+							<th scope="titulo"  style="text-align: center" class="sticky">*</th>
+							<th scope="titulo"  style="text-align: center" class="sticky">Tipo</th>
+							<th scope="titulo"  style="text-align: center" class="sticky">Unidad</th>
+							  <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">RFC </th>
+							  <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">Nombre </th>
+							  <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">Apellido P </th>
+							  <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">Apellido M </th>
+							 <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">Puesto </th>
+							 <th scope="titulo" style="text-align: center" style="width: 400px" class="sticky">Domicilio </th>
+							 <th scope="titulo" style="text-align: center" class="sticky">Correo institucional </th>
+							 <th scope="titulo" style="text-align: center" class="sticky">Correo personal </th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">Telefono Oficina </th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">Contacto Cel. </th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">INE</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">FOMOPE</th>
+						      <th scope="titulo"  style="text-align: center" class="sticky">ACUSE</th>
+
+						   </tr>
+						</thead>
+				 <tbody>
+				 <?php
+			include "Controller/Conexion.php";
+
+			$sql = "SELECT * FROM registro WHERE color_estado = ?";
+			$idMatriz = 0;
+			$cont_tabla1 = 0;
+			$imprimirNoExiste = 0;
+			if ($result = sqlsrv_query($conn, $sql, array('guinda'))) {
+				 while($ver = sqlsrv_fetch_array($result, SQLSRV_FETCH_NUMERIC)){
+							$nombreAdescargar = $ver[13]."_";
+						 ?>
+					<tr class="divisor">
+						<td rowspan="4">
+							<h4><?php echo "#".$idMatriz ?></h4>
+				 		</td>
+						<td>
+							<h4>UNIDAD</h4>
+						</td>
+							<td><?php echo $ver[1] ?></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><?php echo $ver[2] ?></td>
+
+					</tr>
+					<tr>
+						<td>
+							<h4>TITULAR</h4>
+						</td>
+							<td></td>
+							<td><?php echo $ver[3] ?></td>
+							<td><?php echo $ver[4] ?></td>
+							<td><?php echo $ver[5] ?></td>
+							<td><?php echo $ver[6] ?></td>
+							<td><?php echo $ver[7] ?></td>
+							<td><?php echo $ver[8] ?></td>
+							<td><?php echo $ver[9] ?></td>
+							<td><?php echo $ver[10] ?></td>
+							<td><?php echo $ver[11]." Ext. ".$ver[12]?></td>
+					</tr>
+					<tr>
+						<td>
+							<h4>JEFATURA DEL PROGRAMA</h4>
+						</td>
+							<td></td>
+							<td><?php echo $ver[13] ?></td>
+							<td><?php echo $ver[14] ?></td>
+							<td><?php echo $ver[15] ?></td>
+							<td><?php echo $ver[16] ?></td>
+							<td><?php echo $ver[17] ?></td>
+							<td><?php echo $ver[18] ?></td>
+							<td><?php echo $ver[19] ?></td>
+							<td><?php echo $ver[20] ?></td>
+							<td><?php echo $ver[21]." Ext. ".$ver[22]?></td>
+							<td><?php echo $ver[23] ?></td>
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $nombreAdescargar.'INE_.pdf'; ?>', 'INE' )"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> INE</button>
+							</td>						
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $nombreAdescargar.'FMP_.pdf';?>', 'FMP')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> FMP</button>
+							</td>
+							<td>
+								<button  onclick="enviarRutaDoc('<?php echo $nombreAdescargar.'AUR_.pdf'; ?>', 'AUR')"  type="button" class="btn btn-outline-secondary" data-toggle="modal"  data-whatever="@getbootstrap"> ACUSE</button>
+							</td>
+							<td>
+								<button type="button" name="aceptarUser" id="aceptarUser" class="btn btn-secondary color_boton" onclick="escribirIdReg(<?php echo $ver[0]; ?>)" data-toggle="modal" data-target="#aceptarUserModal" >Aceptar</button>
+							</td>
+							<td>
+								<button type="button" name="rechazoInicial" id="rechazoInicial" class="btn btn-danger" onclick="escribirIdRegR(<?php echo $ver[0]; ?>)" data-toggle="modal" data-target="#RechInicial" >Rechazar</button>
+							</td>
+					</tr>
+					<tr>
+						<td>
+							<h4>ENCARGADO DEL PROGRAMA</h4>
+						</td>
+							<td></td>
+							<td><?php echo $ver[24] ?></td>
+							<td><?php echo $ver[25] ?></td>
+							<td><?php echo $ver[26] ?></td>
+							<td><?php echo $ver[27] ?></td>
+							<td><?php echo $ver[28] ?></td>
+							<td></td>
+							<td><?php echo $ver[29] ?></td>
+							<td><?php echo $ver[30] ?></td>
+							<td><?php echo $ver[31]." Ext. ".$ver[32]?></td>
+					</tr>
+						<?php 
+							//$matriz = array($idMatriz => $ver[0] );
+							$matriz[$idMatriz]= $ver[0];							
+							$idMatriz++;
+						}
+							
+						
+						}else{
+							echo '<script type="text/javascript">alert("Error en la conexion");</script>';
+							echo '<script type="text/javascript">alert("error '. mysqli_error($conexion).'");</script>';
+						}
+						?>
+						<td>
+							<h2>TOTAL:</h2>
+						</td>
+						<td>
+							<h3>	<?php echo $idMatriz; ?>	</h3>
+						</td>
+		 </tbody>
+		</table>
 	</center>
 	</body>
 </html>
