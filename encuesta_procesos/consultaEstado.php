@@ -740,16 +740,7 @@
 
 				</div>
 
-					<!-- <form method="post" action="./generarFiltroExcel/reporteBusqueda.php">
-							<input type='hidden' name='array' class='btn btn btn-success text-white bord' value='<?php  echo serialize($matriz); ?>'>
-							<input type='hidden' name='usuario_rol' class='btn btn btn-success text-white bord' value='<?php  echo $usuarioSeguir; ?>'>
-							<input type='submit' name='accionBoton' class='derecha btn btn btn-success text-white bord' value="Reporte">
-							<br>
-							<br>
-							<br>
-
-					</form> -->
-				<!-- 	<div id="result" style="display: none;"> -->
+				
 		<!-- *************************************************************tabla de rechazos -->
 <div class="card bg-secondary text-white">
 				<div class="card-body plantilla-inputg"><h2>Rechazos</h2></div>
@@ -969,6 +960,12 @@
 						</td>
 		 </tbody>
 		</table>
+		<form method="post" action="Controller/reporte_aceptados.php">
+								<input type='submit' name='accionBoton' class='derecha btn btn btn-success text-white bord' value="Reporte Aceptados">
+								<br>
+								<br>
+								<br>
+		</form>
 	</center>
 	</body>
 </html>
